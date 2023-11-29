@@ -5,7 +5,7 @@ const Header = (): React.ReactElement => {
     <HeaderStyled>
       <img
         src="./images/logo.webp"
-        alt="Mi comunidad favorita"
+        alt="mi-comunidad-favorita-logo"
         className="image"
         height={63}
         width={280}
