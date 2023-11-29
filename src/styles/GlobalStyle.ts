@@ -33,8 +33,8 @@ a {
   text-decoration: none;
   background-color: transparent;
   font: inherit;
+  color: inherit;
   cursor: pointer;
-
 }
 `;
 

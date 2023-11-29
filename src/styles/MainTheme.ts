@@ -4,6 +4,7 @@ const mainTheme: DefaultTheme = {
   color: {
     mainFontColor: "#000",
     headerColor: "#0a75bc",
+    activeLinkColor: "949699",
     errorColor: "#c50000",
     successColor: "#23632e",
     inhabilButton: "949699",
