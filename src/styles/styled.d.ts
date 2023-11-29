@@ -4,6 +4,7 @@ export interface DefaultTheme {
   color: {
     mainFontColor: string;
     headerColor: string;
+    activeLinkColor: string;
     errorColor: string;
     successColor: string;
     inhabilButton: string;
