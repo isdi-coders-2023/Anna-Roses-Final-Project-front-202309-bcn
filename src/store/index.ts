@@ -1,7 +1,10 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import { neighboursReducer } from "./features/neighbours/neighboursSlice";
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    neighbourState: neighboursReducer,
+  },
 });
 
 export type AppDispatch = typeof store.dispatch;
