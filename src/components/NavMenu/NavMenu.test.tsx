@@ -3,13 +3,16 @@ import customRender from "../../testUtils/customRender";
 import userEvent from "@testing-library/user-event";
 import NavMenu from "./NavMenu";
 import App from "../App/App";
+import mockNeighbours from "../../testUtils/mockNeighbours";
 
 describe("Given a NavMenu component", () => {
+  const mockData = mockNeighbours;
+
   describe("When it is rendered", () => {
     test("Then it should show a 'Home' text", () => {
       const expectedText = "Home";
 
-      customRender(<NavMenu />);
+      customRender(<NavMenu />, mockData);
       const text = screen.getByRole("link", { name: expectedText });
 
       expect(text).toBeInTheDocument();
@@ -22,7 +25,7 @@ describe("Given a NavMenu component", () => {
       const homeLink = "Home";
       const user = userEvent.setup();
 
-      customRender(<App />);
+      customRender(<App />, mockData);
       const link = screen.getByRole("link", { name: homeLink });
       const title = screen.getByRole("heading", { name: homePageTitle });
       user.click(link);
