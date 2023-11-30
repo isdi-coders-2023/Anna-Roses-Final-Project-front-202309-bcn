@@ -4,10 +4,10 @@ const mainTheme: DefaultTheme = {
   color: {
     mainFontColor: "#000",
     headerColor: "#0a75bc",
-    activeLinkColor: "949699",
+    activeLinkColor: "#949699",
     errorColor: "#c50000",
     successColor: "#23632e",
-    inhabilButton: "949699",
+    inhabilButton: "#949699",
   },
   typography: {
     mainFontFamily: "Verdana, Geneva, Tahoma, sans-serif",
