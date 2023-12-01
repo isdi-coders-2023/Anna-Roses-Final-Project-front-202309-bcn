@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const NeighboursCardStyled = styled.section`
+const NeighboursCardStyled = styled.article`
   border: solid 1px;
   border-color: ${({ theme }) => theme.color.softColor};
   padding: 23px 16px 32px 16px;
