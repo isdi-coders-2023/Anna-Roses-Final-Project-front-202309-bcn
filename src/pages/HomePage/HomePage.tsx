@@ -2,7 +2,7 @@ import HomePageStyled from "./HomePageStyled";
 import { loadNeighboursActioncreator } from "../../store/features/neighbours/neighboursSlice";
 import NeighboursList from "../../components/NeighboursList/NeighboursList";
 import { useAppDispatch } from "../../store/hooks";
-import neighboursData from "../../datado/neighboursDatado/neighboursDatado";
+import neighboursData from "../../data/neighboursData/neighboursData";
 
 const HomePage = (): React.ReactElement => {
   const dispatch = useAppDispatch();
