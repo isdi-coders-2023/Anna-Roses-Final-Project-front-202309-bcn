@@ -12,12 +12,10 @@ const neighbourSlice = createSlice({
     loadNeighbours: (
       currentState,
       action: PayloadAction<NeighbourStructure[]>,
-    ): NeighboursStateStructure => {
-      return {
-        ...currentState,
-        neighbours: action.payload,
-      };
-    },
+    ): NeighboursStateStructure => ({
+      ...currentState,
+      neighbours: action.payload,
+    }),
   },
 });
 

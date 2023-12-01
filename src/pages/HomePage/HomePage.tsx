@@ -1,18 +1,18 @@
 import HomePageStyled from "./HomePageStyled";
 import { loadNeighboursActioncreator } from "../../store/features/neighbours/neighboursSlice";
-import List from "../../components/List/List";
+import NeighboursList from "../../components/NeighboursList/NeighboursList";
 import { useAppDispatch } from "../../store/hooks";
-import mockData from "../../Data/NeighboursData/NeighboursData";
+import neighboursData from "../../datado/neighboursDatado/neighboursDatado";
 
 const HomePage = (): React.ReactElement => {
   const dispatch = useAppDispatch();
-  const currentNeighbours = mockData;
+  const currentNeighbours = neighboursData;
   dispatch(loadNeighboursActioncreator(currentNeighbours));
 
   return (
     <HomePageStyled>
       <h1 className="title">Administra tu comunidad</h1>
-      <List />
+      <NeighboursList />
     </HomePageStyled>
   );
 };
