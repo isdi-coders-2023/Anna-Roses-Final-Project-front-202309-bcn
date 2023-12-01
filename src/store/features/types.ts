@@ -17,6 +17,6 @@ export interface NeighbourStructure {
   image: string;
 }
 
-export interface NeighboursStructure {
+export interface NeighboursStateStructure {
   neighbours: NeighbourStructure[];
 }

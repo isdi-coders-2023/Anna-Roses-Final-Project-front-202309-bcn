@@ -1,5 +1,5 @@
 import mockNeighbours from "../../../testUtils/mockNeighbours";
-import { NeighboursStructure } from "../../types";
+import { NeighboursStateStructure } from "../types";
 import {
   loadNeighboursActioncreator,
   neighboursReducer,
@@ -8,7 +8,7 @@ import {
 describe("Given a peopleReducer reducer", () => {
   describe("When it receives an empty list and a people list", () => {
     test("Then it should return a List of 2 people in it", () => {
-      const currentListState: NeighboursStructure = {
+      const currentListState: NeighboursStateStructure = {
         neighbours: [],
       };
       const neighboursList = mockNeighbours;
