@@ -6,9 +6,9 @@ import mockNeighbours from "../../testUtils/mockNeighbours";
 describe("Given a App component", () => {
   describe("When it is rendered", () => {
     test(
-      "Then it should show an image with an alt text 'mi-comunidad-favorita-logo'",
+      "Then it should show an image with an alt text 'Mi comunidad favorita logo'",
     );
-    const expectedAltText = "mi-comunidad-favorita-logo";
+    const expectedAltText = "Mi comunidad favorita logo";
     const mockData = mockNeighbours;
 
     customRender(<App />, mockData);

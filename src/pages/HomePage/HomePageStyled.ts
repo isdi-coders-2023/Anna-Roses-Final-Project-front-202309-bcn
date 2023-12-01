@@ -7,7 +7,7 @@ const HomePageStyled = styled.div`
   margin-top: 95px;
 
   .title {
-    font-size: ${({ theme }) => theme.typography.pageTitleSize};
+    font-size: ${({ theme }) => theme.typography.titleSize};
     text-align: center;
     padding: 33px 26px 0 26px;
   }

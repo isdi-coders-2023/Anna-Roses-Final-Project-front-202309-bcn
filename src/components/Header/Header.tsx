@@ -4,11 +4,11 @@ const Header = (): React.ReactElement => {
   return (
     <HeaderStyled>
       <img
-        src="./images/logo.webp"
-        alt="mi-comunidad-favorita-logo"
+        src="images/logo.webp"
+        alt="Mi comunidad favorita logo"
         className="image"
-        height={63}
-        width={280}
+        height="63"
+        width="280"
       />
     </HeaderStyled>
   );

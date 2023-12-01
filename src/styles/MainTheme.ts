@@ -4,15 +4,14 @@ const mainTheme: DefaultTheme = {
   color: {
     mainFontColor: "#000",
     headerColor: "#0a75bc",
-    activeLinkColor: "#949699",
+    navMenuColor: "#fff",
+    softColor: "#949699",
     errorColor: "#c50000",
     successColor: "#23632e",
-    inhabilButton: "#949699",
   },
   typography: {
     mainFontFamily: "Verdana, Geneva, Tahoma, sans-serif",
-    pageTitleSize: "1.156rem",
-    cardTitleSize: "1.375rem",
+    titleSize: "1.375rem",
     textSize: "1.125rem",
     errorPage404: "2.8rem",
     errorPageOops: "1.8rem",
