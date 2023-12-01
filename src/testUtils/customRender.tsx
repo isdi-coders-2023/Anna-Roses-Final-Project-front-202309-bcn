@@ -4,7 +4,7 @@ import { MemoryRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import mainTheme from "../styles/MainTheme";
 import GlobalStyle from "../styles/GlobalStyle";
-import { NeighbourStructure } from "../store/types";
+import { NeighbourStructure } from "../store/features/types";
 import { configureStore } from "@reduxjs/toolkit";
 import { neighboursReducer } from "../store/features/neighbours/neighboursSlice";
 import { Provider } from "react-redux";

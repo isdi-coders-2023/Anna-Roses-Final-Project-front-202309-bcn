@@ -3,7 +3,7 @@ import { neighboursReducer } from "./features/neighbours/neighboursSlice";
 
 export const store = configureStore({
   reducer: {
-    neighbourState: neighboursReducer,
+    neighboursState: neighboursReducer,
   },
 });
 

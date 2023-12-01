@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { NeighbourStructure, NeighboursStructure } from "../../types";
+import { NeighbourStructure, NeighboursStateStructure } from "../types";
 
-const initialNeighbours: NeighboursStructure = {
+const initialNeighbours: NeighboursStateStructure = {
   neighbours: [],
 };
 
@@ -12,7 +12,7 @@ const neighbourSlice = createSlice({
     loadNeighbours: (
       currentState,
       action: PayloadAction<NeighbourStructure[]>,
-    ): NeighboursStructure => {
+    ): NeighboursStateStructure => {
       return {
         ...currentState,
         neighbours: action.payload,
@@ -23,5 +23,4 @@ const neighbourSlice = createSlice({
 
 export const { loadNeighbours: loadNeighboursActioncreator } =
   neighbourSlice.actions;
-
 export const neighboursReducer = neighbourSlice.reducer;

@@ -1,4 +1,4 @@
-import { NeighbourStructure } from "../store/types";
+import { NeighbourStructure } from "../store/features/types";
 
 const mockNeighbours: NeighbourStructure[] = [
   {
