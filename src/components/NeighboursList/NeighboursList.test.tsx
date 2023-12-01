@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import customRender from "../../testUtils/customRender";
-import mockNeighbours from "../../testUtils/mockNeighbours";
-import List from "./List";
+import mockNeighbours from "../../mocks/mockNeighbours";
+import NeighboursList from "./NeighboursList";
 
 describe("Given a List component", () => {
   describe("When it is rendered and receives a list of two neighbours", () => {
@@ -9,7 +9,7 @@ describe("Given a List component", () => {
       const mockList = mockNeighbours;
       const expectedNumberOfItems = 2;
 
-      customRender(<List />, mockList);
+      customRender(<NeighboursList />, mockList);
       const list = screen.getAllByRole("img").length;
 
       expect(list).toBe(expectedNumberOfItems);

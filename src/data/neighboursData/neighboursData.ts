@@ -1,6 +1,6 @@
 import { NeighbourStructure } from "../../store/features/types";
 
-const mockData: NeighbourStructure[] = [
+const neighboursData: NeighbourStructure[] = [
   {
     _id: "6563639cc4ddfcae99eeb07a",
     name: "Marta Ibarra Chef",
@@ -39,4 +39,4 @@ const mockData: NeighbourStructure[] = [
   },
 ];
 
-export default mockData;
+export default neighboursData;

@@ -36,6 +36,12 @@ a {
   color: inherit;
   cursor: pointer;
 }
+
+button {
+  border: none;
+  background-color: transparent;
+  font: inherit;
+}
 `;
 
 export default GlobalStyle;

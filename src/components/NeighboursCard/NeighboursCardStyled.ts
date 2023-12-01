@@ -1,18 +1,21 @@
 import styled from "styled-components";
 
-const CardStyled = styled.section`
+const NeighboursCardStyled = styled.section`
   border: solid 1px;
   border-color: ${({ theme }) => theme.color.softColor};
-  margin-top: 35px;
   padding: 23px 16px 32px 16px;
-  gap: 34px;
 
   .card {
-    &__image {
+    &__image-container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-bottom: 3px;
+      margin-bottom: 32px;
+      width: 100%;
+    }
+
+    &__image {
+      object-fit: contain;
     }
 
     &__name {
@@ -27,7 +30,15 @@ const CardStyled = styled.section`
     &__intro {
       font-weight: bold;
     }
+
+    &__buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 11px;
+      margin-top: 32px;
+    }
   }
 `;
 
-export default CardStyled;
+export default NeighboursCardStyled;

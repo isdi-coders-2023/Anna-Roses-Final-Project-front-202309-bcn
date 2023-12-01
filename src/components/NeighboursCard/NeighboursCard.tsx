@@ -1,19 +1,22 @@
 import { NeighbourStructure } from "../../store/features/types";
-import CardStyled from "./CardStyled";
+import NeighboursCardStyled from "./NeighboursCardStyled";
 
 interface NeighbourCardProps {
   neighbour: NeighbourStructure;
 }
 
-const Card = ({ neighbour }: NeighbourCardProps): React.ReactElement => {
+const NeighboursCard = ({
+  neighbour,
+}: NeighbourCardProps): React.ReactElement => {
   return (
-    <CardStyled className="card">
-      <div className="card__image">
+    <NeighboursCardStyled className="card">
+      <div className="card__image-container">
         <img
           src={neighbour.image}
           alt={neighbour.name}
           width="200"
           height="200"
+          className="card__image"
         />
       </div>
       <ul className="card__items">
@@ -38,9 +41,13 @@ const Card = ({ neighbour }: NeighbourCardProps): React.ReactElement => {
           <span className="card__intro">Tipo de actividad: </span>
           <span className="card__input">{neighbour.activityKind}</span>
         </li>
+        <li className="card__item">
+          <span className="card__intro">Comentarios: </span>
+          <span className="card__input">{neighbour.coments}</span>
+        </li>
       </ul>
-    </CardStyled>
+    </NeighboursCardStyled>
   );
 };
 
-export default Card;
+export default NeighboursCard;

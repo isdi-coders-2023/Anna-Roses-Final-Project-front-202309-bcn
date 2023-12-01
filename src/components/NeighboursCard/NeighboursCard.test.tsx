@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import customRender from "../../testUtils/customRender";
-import mockNeighbours from "../../testUtils/mockNeighbours";
-import Card from "./Card";
+import mockNeighbours from "../../mocks/mockNeighbours";
+import NeighboursCard from "./NeighboursCard";
 
 describe("Given a Card component", () => {
   describe("When it is rendered and recives a neighbour and a key number 0", () => {
@@ -10,7 +10,10 @@ describe("Given a Card component", () => {
       const mockNeighbour = mockList[0];
       const expectedText = mockNeighbour.name;
 
-      customRender(<Card key={0} neighbour={mockNeighbour} />, mockList);
+      customRender(
+        <NeighboursCard key={0} neighbour={mockNeighbour} />,
+        mockList,
+      );
       const text = screen.getByRole("img", { name: expectedText });
 
       expect(text).toBeInTheDocument();

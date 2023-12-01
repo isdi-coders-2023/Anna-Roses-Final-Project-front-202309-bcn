@@ -1,4 +1,4 @@
-import mockNeighbours from "../../../testUtils/mockNeighbours";
+import mockNeighbours from "../../../mocks/mockNeighbours";
 import { NeighboursStateStructure } from "../types";
 import {
   loadNeighboursActioncreator,
