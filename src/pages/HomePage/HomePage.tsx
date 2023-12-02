@@ -1,13 +1,21 @@
 import HomePageStyled from "./HomePageStyled";
-import { loadNeighboursActioncreator } from "../../store/features/neighbours/neighboursSlice";
+import { loadNeighboursActionCreator } from "../../store/features/neighbours/neighboursSlice";
 import NeighboursList from "../../components/NeighboursList/NeighboursList";
 import { useAppDispatch } from "../../store/hooks";
-import neighboursData from "../../data/neighboursData/neighboursData";
+import useNeighboursApi from "../../hooks/useNeighboursApi";
+import { useEffect } from "react";
 
 const HomePage = (): React.ReactElement => {
   const dispatch = useAppDispatch();
-  const currentNeighbours = neighboursData;
-  dispatch(loadNeighboursActioncreator(currentNeighbours));
+  const { getNeighboursApi } = useNeighboursApi();
+
+  useEffect(() => {
+    (async () => {
+      const { neighbours } = await getNeighboursApi();
+
+      dispatch(loadNeighboursActionCreator(neighbours));
+    })();
+  }, [dispatch, getNeighboursApi]);
 
   return (
     <HomePageStyled>
