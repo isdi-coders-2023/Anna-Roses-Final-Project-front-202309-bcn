@@ -19,6 +19,6 @@ const neighbourSlice = createSlice({
   },
 });
 
-export const { loadNeighbours: loadNeighboursActioncreator } =
+export const { loadNeighbours: loadNeighboursActionCreator } =
   neighbourSlice.actions;
 export const neighboursReducer = neighbourSlice.reducer;

@@ -1,7 +1,7 @@
 import mockNeighbours from "../../../mocks/mockNeighbours";
 import { NeighboursStateStructure } from "../types";
 import {
-  loadNeighboursActioncreator,
+  loadNeighboursActionCreator,
   neighboursReducer,
 } from "./neighboursSlice";
 
@@ -15,7 +15,7 @@ describe("Given a peopleReducer reducer", () => {
 
       const newNeighboursState = neighboursReducer(
         currentListState,
-        loadNeighboursActioncreator(neighboursList),
+        loadNeighboursActionCreator(neighboursList),
       );
 
       expect(newNeighboursState.neighbours).toStrictEqual(neighboursList);
