@@ -5,7 +5,7 @@ const Loading = (): React.ReactElement => {
     <LoadingStyled className="loading">
       <img
         src="./images/loading.webp"
-        alt=""
+        alt="cargando"
         className="loading__image"
         width="250"
         height="250"
