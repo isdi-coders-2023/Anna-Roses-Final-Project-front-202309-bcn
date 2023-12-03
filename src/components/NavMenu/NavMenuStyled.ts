@@ -13,7 +13,7 @@ const NavMenuStyled = styled.nav`
     border-top: solid 2px;
     border-color: ${({ theme }) => theme.color.headerColor};
     margin-bottom: 0;
-    background-color: ${({ theme }) => theme.color.navMenuColor};
+    background-color: ${({ theme }) => theme.color.softBackgroundColor};
   }
 
   .active {

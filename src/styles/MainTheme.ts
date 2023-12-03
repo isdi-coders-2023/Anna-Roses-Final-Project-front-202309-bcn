@@ -4,7 +4,7 @@ const mainTheme: DefaultTheme = {
   color: {
     mainFontColor: "#000",
     headerColor: "#0a75bc",
-    navMenuColor: "#fff",
+    softBackgroundColor: "#fff",
     softColor: "#656565",
     errorColor: "#c50000",
     successColor: "#23632e",
