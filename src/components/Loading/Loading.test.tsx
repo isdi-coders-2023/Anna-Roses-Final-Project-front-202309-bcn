@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import mockNeighbours from "../../mocks/mockNeighbours";
-import customRender from "../../testUtils/customRender";
 import Loading from "./Loading";
+import { customRender } from "../../testUtils/customRender";
 
 describe("Given a Loading component", () => {
   describe("When it is rendered", () => {

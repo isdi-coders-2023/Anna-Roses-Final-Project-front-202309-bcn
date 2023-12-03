@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
-import customRender from "../../testUtils/customRender";
 import NavMenu from "./NavMenu";
 import mockNeighbours from "../../mocks/mockNeighbours";
+import { customRender } from "../../testUtils/customRender";
 
 describe("Given a NavMenu component", () => {
   describe("When it is rendered", () => {
