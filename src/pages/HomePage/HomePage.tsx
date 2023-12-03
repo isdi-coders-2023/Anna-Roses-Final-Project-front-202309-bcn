@@ -1,9 +1,9 @@
 import HomePageStyled from "./HomePageStyled";
+import { useEffect } from "react";
 import { loadNeighboursActionCreator } from "../../store/features/neighbours/neighboursSlice";
 import NeighboursList from "../../components/NeighboursList/NeighboursList";
 import { useAppDispatch } from "../../store/hooks";
 import useNeighboursApi from "../../hooks/useNeighboursApi";
-import { useEffect } from "react";
 
 const HomePage = (): React.ReactElement => {
   const dispatch = useAppDispatch();

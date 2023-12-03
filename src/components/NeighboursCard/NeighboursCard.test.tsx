@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
-import customRender from "../../testUtils/customRender";
 import mockNeighbours from "../../mocks/mockNeighbours";
 import NeighboursCard from "./NeighboursCard";
+import { customRender } from "../../testUtils/customRender";
 
 describe("Given a Card component", () => {
   describe("When it is rendered and recives a neighbour and a key number 0", () => {

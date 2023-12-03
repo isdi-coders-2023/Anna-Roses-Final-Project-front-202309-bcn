@@ -1,15 +1,17 @@
 import { screen } from "@testing-library/react";
-import customRender from "../../testUtils/customRender";
 import App from "./App";
 import mockNeighbours from "../../mocks/mockNeighbours";
+import { customRender } from "../../testUtils/customRender";
 
-describe("Given a App component", () => {
+describe("Given an App component", () => {
   const mockData = mockNeighbours;
   describe("When it is rendered", () => {
     test(
       "Then it should show an image with an alt text 'Mi comunidad favorita logo'",
     );
+
     const expectedAltText = "Mi comunidad favorita logo";
+
     customRender(<App />, mockData);
     const altText = screen.getByRole("img", { name: expectedAltText });
 
