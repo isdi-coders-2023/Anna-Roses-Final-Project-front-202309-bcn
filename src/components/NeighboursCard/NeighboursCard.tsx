@@ -10,17 +10,15 @@ const NeighboursCard = ({
 }: NeighbourCardProps): React.ReactElement => {
   return (
     <NeighboursCardStyled className="card">
-      <div className="card__image-container">
-        <img
-          src={neighbour.image}
-          alt={neighbour.name}
-          width="200"
-          height="200"
-          className="card__image"
-        />
-      </div>
+      <img
+        src={neighbour.image}
+        alt={neighbour.name}
+        width="200"
+        height="200"
+        className="card__image"
+      />
+      <h2 className="card__item card__name">{neighbour.name}</h2>
       <ul className="card__items">
-        <li className="card__item card__name">{neighbour.name}</li>
         <li className="card__item">
           <span className="card__intro">Piso: </span>
           <span className="card__input">{neighbour.floor}</span>

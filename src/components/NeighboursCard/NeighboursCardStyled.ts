@@ -6,16 +6,14 @@ const NeighboursCardStyled = styled.article`
   padding: 23px 16px 32px 16px;
 
   .card {
-    &__image-container {
+    &__image {
       display: flex;
       flex-direction: column;
       align-items: center;
       margin-bottom: 32px;
       width: 100%;
-    }
-
-    &__image {
       object-fit: contain;
+      padding: 0 33px;
     }
 
     &__name {
