@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import { PropsWithChildren } from "react";
+
 import { MemoryRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import mainTheme from "../styles/MainTheme";
@@ -8,7 +8,6 @@ import { NeighbourStructure } from "../store/features/types";
 import { configureStore } from "@reduxjs/toolkit";
 import { neighboursReducer } from "../store/features/neighbours/neighboursSlice";
 import { Provider } from "react-redux";
-import { store } from "../store";
 import { uiReducer } from "../store/features/ui/uiSlice";
 import mockNeighbours from "../mocks/mockNeighbours";
 
@@ -36,14 +35,6 @@ export const customRender = (
         </ThemeProvider>
       </Provider>
     </MemoryRouter>,
-  );
-};
-
-export const providerWrapper = ({ children }: PropsWithChildren) => {
-  return (
-    <MemoryRouter>
-      <Provider store={store}>{children}</Provider>
-    </MemoryRouter>
   );
 };
 
