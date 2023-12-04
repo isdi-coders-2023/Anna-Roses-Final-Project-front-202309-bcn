@@ -1,5 +1,7 @@
 import {
+  hideErrorActionCreator,
   hideLoadingactionCreator,
+  showErrorActionCreator,
   showLoadingActionCreator,
   uiReducer,
 } from "./uiSlice";
@@ -28,6 +30,38 @@ describe("Given a hideLoading minireducer", () => {
       );
 
       expect(isLoadingFalse).toStrictEqual(initialMockedUiState);
+    });
+  });
+});
+
+describe("Given a showError minireducer", () => {
+  describe("When it receives a currentUiState with isError property set as false", () => {
+    test("Then it should change it to true", () => {
+      const initialMockedUiState = { isError: false };
+      const finalMockedUiState = { isError: true };
+
+      const isErrorTrue = uiReducer(
+        initialMockedUiState,
+        showErrorActionCreator(),
+      );
+
+      expect(isErrorTrue).toStrictEqual(finalMockedUiState);
+    });
+  });
+});
+
+describe("Given a hideError minireducer", () => {
+  describe("When it receives a currentUiState with isError property set as true", () => {
+    test("Then it should change it to false", () => {
+      const initialMockedUiState = { isError: true };
+      const finalMockedUiState = { isError: false };
+
+      const isErrorFalse = uiReducer(
+        initialMockedUiState,
+        hideErrorActionCreator,
+      );
+
+      expect(isErrorFalse).toStrictEqual(finalMockedUiState);
     });
   });
 });
