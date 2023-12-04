@@ -40,7 +40,11 @@ export const customRender = (
 };
 
 export const providerWrapper = ({ children }: PropsWithChildren) => {
-  return <Provider store={store}>{children}</Provider>;
+  return (
+    <MemoryRouter>
+      <Provider store={store}>{children}</Provider>
+    </MemoryRouter>
+  );
 };
 
 export const customRenderWithoutRouter = (children: React.ReactElement) => {

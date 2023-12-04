@@ -19,6 +19,7 @@ const App = (): React.ReactElement => {
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/*" element={<NotFoundPage />} />
+          <Route path="/error-page" element={<NotFoundPage />} />
         </Routes>
       </ContainerStyled>
       <NavMenu />

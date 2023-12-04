@@ -1,7 +1,11 @@
 import axios from "axios";
 import { useCallback } from "react";
-import { NeighbourStructure } from "../store/features/types";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../store/hooks";
+import {
+  NeighbourStructure,
+  NeighboursStateStructure,
+} from "../store/features/types";
 import {
   hideLoadingactionCreator,
   showLoadingActionCreator,
@@ -11,18 +15,27 @@ const useNeighboursApi = () => {
   axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
-  const getNeighboursApi = useCallback(async () => {
+  const getNeighboursApi = useCallback(async (): Promise<
+    NeighboursStateStructure | undefined
+  > => {
     dispatch(showLoadingActionCreator());
 
-    const { data: neighbours } = await axios.get<{
-      neighbours: NeighbourStructure[];
-    }>("/neighbours");
+    try {
+      const { data: neighbours } = await axios.get<{
+        neighbours: NeighbourStructure[];
+      }>("/neighbours");
 
-    dispatch(hideLoadingactionCreator());
+      dispatch(hideLoadingactionCreator());
 
-    return neighbours;
-  }, [dispatch]);
+      return neighbours;
+    } catch {
+      navigate("/error-page");
+
+      dispatch(hideLoadingactionCreator());
+    }
+  }, [dispatch, navigate]);
 
   return { getNeighboursApi };
 };
