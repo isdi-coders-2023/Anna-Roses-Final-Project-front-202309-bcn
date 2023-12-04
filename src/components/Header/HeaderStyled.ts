@@ -8,6 +8,7 @@ const HeaderStyled = styled.header`
   width: 100%;
   display: flex;
   justify-content: center;
+  z-index: 1;
 
   .image {
     object-fit: contain;
