@@ -12,7 +12,7 @@ describe("Given a HomePage component", () => {
       customRender(<HomePage />, mockData);
       const title = screen.getByRole("heading", { name: expectedTitle });
 
-      expect(title).toBeInTheDocument;
+      expect(title).toBeInTheDocument();
     });
   });
 });
