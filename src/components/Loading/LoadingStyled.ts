@@ -7,7 +7,6 @@ const LoadingStyled = styled.div`
   position: fixed;
   height: 100vh;
   width: 100vw;
-  background-color: ${({ theme }) => theme.color.softBackgroundColor};
 
   .loading {
     &__image {

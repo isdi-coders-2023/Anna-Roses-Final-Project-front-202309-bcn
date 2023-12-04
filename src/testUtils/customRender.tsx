@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import React, { PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 import { MemoryRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import mainTheme from "../styles/MainTheme";
@@ -10,6 +10,7 @@ import { neighboursReducer } from "../store/features/neighbours/neighboursSlice"
 import { Provider } from "react-redux";
 import { store } from "../store";
 import { uiReducer } from "../store/features/ui/uiSlice";
+import mockNeighbours from "../mocks/mockNeighbours";
 
 export const customRender = (
   children: React.ReactElement,
@@ -39,5 +40,29 @@ export const customRender = (
 };
 
 export const providerWrapper = ({ children }: PropsWithChildren) => {
-  return <Provider store={store}>{children}</Provider>;
+  return (
+    <MemoryRouter>
+      <Provider store={store}>{children}</Provider>
+    </MemoryRouter>
+  );
+};
+
+export const customRenderWithoutRouter = (children: React.ReactElement) => {
+  const mockStore = configureStore({
+    reducer: {
+      neighboursState: neighboursReducer,
+      uiState: uiReducer,
+    },
+    preloadedState: {
+      neighboursState: { neighbours: mockNeighbours },
+      uiState: { isLoading: false },
+    },
+  });
+
+  render(
+    <ThemeProvider theme={mainTheme}>
+      <GlobalStyle />
+      <Provider store={mockStore}>{children}</Provider>
+    </ThemeProvider>,
+  );
 };

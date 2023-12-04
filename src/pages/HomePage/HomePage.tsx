@@ -11,9 +11,11 @@ const HomePage = (): React.ReactElement => {
 
   useEffect(() => {
     (async () => {
-      const { neighbours } = await getNeighboursApi();
+      const neighbours = await getNeighboursApi();
 
-      dispatch(loadNeighboursActionCreator(neighbours));
+      if (neighbours) {
+        dispatch(loadNeighboursActionCreator(neighbours.neighbours));
+      }
     })();
   }, [dispatch, getNeighboursApi]);
 

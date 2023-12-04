@@ -5,6 +5,7 @@ import Header from "../Header/Header";
 import NavMenu from "../NavMenu/NavMenu";
 import { useAppSelector } from "../../store/hooks";
 import Loading from "../Loading/Loading";
+import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 
 const App = (): React.ReactElement => {
   const uiState = useAppSelector((state) => state.uiState);
@@ -17,6 +18,8 @@ const App = (): React.ReactElement => {
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<HomePage />} />
+          <Route path="/*" element={<NotFoundPage />} />
+          <Route path="/error-page" element={<NotFoundPage />} />
         </Routes>
       </ContainerStyled>
       <NavMenu />
