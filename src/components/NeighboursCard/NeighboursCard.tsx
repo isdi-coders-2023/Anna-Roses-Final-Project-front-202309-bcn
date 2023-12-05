@@ -1,5 +1,8 @@
 import useNeighboursApi from "../../hooks/useNeighboursApi";
-import { deleteNeighbourActionCreator } from "../../store/features/neighbours/neighboursSlice";
+import {
+  deleteNeighbourActionCreator,
+  loadNeighboursActionCreator,
+} from "../../store/features/neighbours/neighboursSlice";
 import { NeighbourStructure } from "../../store/features/types";
 import { useAppDispatch } from "../../store/hooks";
 import Button from "../Button/Button";
@@ -13,11 +16,17 @@ const NeighboursCard = ({
   neighbour,
 }: NeighbourCardProps): React.ReactElement => {
   const dispatch = useAppDispatch();
-  const { deleteNeighbour } = useNeighboursApi();
+  const { getNeighboursApi, deleteNeighbourFromApi } = useNeighboursApi();
 
-  const deleteNeighbourById = (neighbourId: string) => {
-    deleteNeighbour(neighbourId);
+  const deleteNeighbourById = async (neighbourId: string) => {
+    await deleteNeighbourFromApi(neighbourId);
     dispatch(deleteNeighbourActionCreator(neighbourId));
+
+    const neighbours = await getNeighboursApi();
+
+    if (neighbours) {
+      dispatch(loadNeighboursActionCreator(neighbours.neighbours));
+    }
   };
 
   return (
