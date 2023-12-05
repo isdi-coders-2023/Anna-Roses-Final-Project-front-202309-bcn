@@ -16,9 +16,21 @@ const neighbourSlice = createSlice({
       ...currentState,
       neighbours: action.payload,
     }),
+
+    deleteNeighbour: (
+      currentState,
+      action: PayloadAction<string>,
+    ): NeighboursStateStructure => ({
+      ...currentState,
+      neighbours: currentState.neighbours.filter(
+        (neighbour) => neighbour._id !== action.payload,
+      ),
+    }),
   },
 });
 
-export const { loadNeighbours: loadNeighboursActionCreator } =
-  neighbourSlice.actions;
+export const {
+  loadNeighbours: loadNeighboursActionCreator,
+  deleteNeighbour: deleteNeighbourActionCreator,
+} = neighbourSlice.actions;
 export const neighboursReducer = neighbourSlice.reducer;
