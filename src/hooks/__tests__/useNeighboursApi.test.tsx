@@ -1,7 +1,7 @@
 import { renderHook } from "@testing-library/react";
 import mockNeighbours from "../../mocks/mockNeighbours";
 import useNeighboursApi from "../useNeighboursApi";
-import { providerWrapper } from "../../testUtils/customRender";
+import { providerWrapper } from "../../testUtils/customWrapper";
 
 describe("Given a useNeighboursApi custom hook", () => {
   describe("When it renders the information of 'Marta Ibarra Chef' and 'Laura Guitérrez Empoderada'", () => {
