@@ -37,7 +37,20 @@ const useNeighboursApi = () => {
     }
   }, [dispatch, navigate]);
 
-  return { getNeighboursApi };
+  const deleteNeighbours = useCallback(
+    async (neighbourId: string): Promise<void> => {
+      dispatch(showLoadingActionCreator());
+
+      const { data } = await axios.delete(`/neighbours/${neighbourId}`);
+
+      dispatch(hideLoadingactionCreator());
+
+      return data;
+    },
+    [dispatch],
+  );
+
+  return { getNeighboursApi, deleteNeighbours };
 };
 
 export default useNeighboursApi;
