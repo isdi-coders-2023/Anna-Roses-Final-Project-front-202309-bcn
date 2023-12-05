@@ -37,7 +37,7 @@ const useNeighboursApi = () => {
     }
   }, [dispatch, navigate]);
 
-  const deleteNeighbours = useCallback(
+  const deleteNeighbour = useCallback(
     async (neighbourId: string): Promise<void> => {
       dispatch(showLoadingActionCreator());
 
@@ -50,7 +50,7 @@ const useNeighboursApi = () => {
     [dispatch],
   );
 
-  return { getNeighboursApi, deleteNeighbours };
+  return { getNeighboursApi, deleteNeighbour };
 };
 
 export default useNeighboursApi;

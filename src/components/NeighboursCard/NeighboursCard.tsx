@@ -1,4 +1,8 @@
+import useNeighboursApi from "../../hooks/useNeighboursApi";
+import { deleteNeighbourActionCreator } from "../../store/features/neighbours/neighboursSlice";
 import { NeighbourStructure } from "../../store/features/types";
+import { useAppDispatch } from "../../store/hooks";
+import Button from "../Button/Button";
 import NeighboursCardStyled from "./NeighboursCardStyled";
 
 interface NeighbourCardProps {
@@ -8,6 +12,14 @@ interface NeighbourCardProps {
 const NeighboursCard = ({
   neighbour,
 }: NeighbourCardProps): React.ReactElement => {
+  const dispatch = useAppDispatch();
+  const { deleteNeighbour } = useNeighboursApi();
+
+  const deleteNeighbourById = (neighbourId: string) => {
+    deleteNeighbour(neighbourId);
+    dispatch(deleteNeighbourActionCreator(neighbourId));
+  };
+
   return (
     <NeighboursCardStyled className="card">
       <img
@@ -43,6 +55,14 @@ const NeighboursCard = ({
           <span className="card__intro">Comentarios: </span>
           <span className="card__input">{neighbour.coments}</span>
         </li>
+        <div className="card__buttons">
+          <Button
+            buttonText="Eliminar"
+            actionOnClick={() => {
+              deleteNeighbourById(neighbour._id);
+            }}
+          />
+        </div>
       </ul>
     </NeighboursCardStyled>
   );
