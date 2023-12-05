@@ -27,13 +27,13 @@ describe("Given a useNeighboursApi custom hook", () => {
 
       const {
         result: {
-          current: { deleteNeighbour },
+          current: { deleteNeighbourFromApi },
         },
       } = renderHook(() => useNeighboursApi(), {
         wrapper: providerWrapper,
       });
 
-      const response = await deleteNeighbour(expectedNeighbourId);
+      const response = await deleteNeighbourFromApi(expectedNeighbourId);
 
       expect(response).toStrictEqual(expectedResponse);
     });

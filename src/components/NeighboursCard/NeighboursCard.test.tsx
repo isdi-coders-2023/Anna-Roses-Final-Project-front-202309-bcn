@@ -3,6 +3,8 @@ import mockNeighbours from "../../mocks/mockNeighbours";
 import NeighboursCard from "./NeighboursCard";
 import { customRender } from "../../testUtils/customRender";
 import userEvent from "@testing-library/user-event";
+import { server } from "../../mocks/node";
+import { errorHandlers } from "../../mocks/handlers";
 
 describe("Given a Card component", () => {
   const mockList = mockNeighbours;
@@ -23,8 +25,9 @@ describe("Given a Card component", () => {
   });
 
   describe("When it receives a click on the 'Eliminar 'button of 'Marta Ibarra Chef'", () => {
+    const buttonText = "Eliminar";
+
     test("Then it should not show 'Marta Ibarra Chef' neighbour", async () => {
-      const buttonText = "Eliminar";
       const neighbourName = "Marta Ibarra Chef";
 
       customRender(<NeighboursCard neighbour={mockList[0]} />, mockList);
@@ -35,6 +38,29 @@ describe("Given a Card component", () => {
       waitFor(() => {
         expect(heading).not.toBeInTheDocument();
       });
+    });
+
+    test("Then it should show a feedback message with 'Hemos eliminado el vecino!'", async () => {
+      const feedbackSuccess = "Hemos eliminado el vecino!";
+      customRender(<NeighboursCard neighbour={mockList[0]} />, mockList);
+
+      const deleteButton = screen.getByRole("button", { name: buttonText });
+      await userEvent.click(deleteButton);
+
+      expect(screen.getByText(feedbackSuccess)).toBeInTheDocument();
+    });
+
+    test("Then the promise is rejected and it should show a feedback message with 'Disculpa, no hemos podido eliminar el vecino'", async () => {
+      server.use(...errorHandlers);
+      const feedbackSuccess = "Disculpa, no hemos podido eliminar el vecino";
+      customRender(<NeighboursCard neighbour={mockList[0]} />, mockList);
+
+      const deleteButton = screen.getByRole("button", {
+        name: buttonText,
+      });
+      await userEvent.click(deleteButton);
+
+      expect(screen.getByText(feedbackSuccess)).toBeInTheDocument();
     });
   });
 });

@@ -4,10 +4,11 @@ import { MemoryRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import mainTheme from "../styles/MainTheme";
 import GlobalStyle from "../styles/GlobalStyle";
+import { Provider } from "react-redux";
+import { ToastContainer } from "react-toastify";
 import { NeighbourStructure } from "../store/features/types";
 import { configureStore } from "@reduxjs/toolkit";
 import { neighboursReducer } from "../store/features/neighbours/neighboursSlice";
-import { Provider } from "react-redux";
 import { uiReducer } from "../store/features/ui/uiSlice";
 import mockNeighbours from "../mocks/mockNeighbours";
 
@@ -30,6 +31,7 @@ export const customRender = (
     <MemoryRouter>
       <Provider store={mockStore}>
         <ThemeProvider theme={mainTheme}>
+          <ToastContainer />
           <GlobalStyle />
           {children}
         </ThemeProvider>

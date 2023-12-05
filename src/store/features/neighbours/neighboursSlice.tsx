@@ -33,4 +33,5 @@ export const {
   loadNeighbours: loadNeighboursActionCreator,
   deleteNeighbour: deleteNeighbourActionCreator,
 } = neighbourSlice.actions;
+
 export const neighboursReducer = neighbourSlice.reducer;

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { useAppDispatch } from "../store/hooks";
 import {
   NeighbourStructure,
@@ -37,20 +38,27 @@ const useNeighboursApi = () => {
     }
   }, [dispatch, navigate]);
 
-  const deleteNeighbour = useCallback(
+  const deleteNeighbourFromApi = useCallback(
     async (neighbourId: string): Promise<void> => {
-      dispatch(showLoadingActionCreator());
+      try {
+        dispatch(showLoadingActionCreator());
 
-      const { data } = await axios.delete(`/neighbours/${neighbourId}`);
+        const { data } = await axios.delete(`/neighbours/${neighbourId}`);
+        toast.success("Hemos eliminado el vecino!");
 
-      dispatch(hideLoadingactionCreator());
+        dispatch(hideLoadingactionCreator());
 
-      return data;
+        return data;
+      } catch {
+        dispatch(hideLoadingactionCreator());
+
+        toast.error("Disculpa, no hemos podido eliminar el vecino");
+      }
     },
     [dispatch],
   );
 
-  return { getNeighboursApi, deleteNeighbour };
+  return { getNeighboursApi, deleteNeighbourFromApi };
 };
 
 export default useNeighboursApi;
