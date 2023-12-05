@@ -19,4 +19,23 @@ describe("Given a useNeighboursApi custom hook", () => {
       expect(currentNeighbours).toStrictEqual(expectedNeighbours);
     });
   });
+
+  describe("When it calls its deleteNeighbour method with a neighbourId", () => {
+    test("Then it should delete 'Marta Ibarra Chef'", async () => {
+      const expectedNeighbourId = mockNeighbours[0]._id;
+      const expectedResponse = {};
+
+      const {
+        result: {
+          current: { deleteNeighbour },
+        },
+      } = renderHook(() => useNeighboursApi(), {
+        wrapper: providerWrapper,
+      });
+
+      const response = await deleteNeighbour(expectedNeighbourId);
+
+      expect(response).toStrictEqual(expectedResponse);
+    });
+  });
 });
