@@ -23,7 +23,7 @@ describe("Given a peopleReducer reducer", () => {
     });
   });
 
-  describe("When it receives a list of two neighbours, an existing neighbour id and the deleteNeighbour method", () => {
+  describe("When it receives a list of two neighbours, an existing neighbour id and the deleteNeighbour function", () => {
     test("Then it should return the list of one neighbour without the deleted neighbour 'Marta Ibarra Chef'", () => {
       const initialState: NeighboursStateStructure = {
         neighbours: mockNeighbours,
