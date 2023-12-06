@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useCallback } from "react";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAppDispatch } from "../store/hooks";
 import {
@@ -16,7 +15,6 @@ const useNeighboursApi = () => {
   axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
 
   const getNeighboursApi = useCallback(async (): Promise<
     NeighboursStateStructure | undefined
@@ -32,11 +30,13 @@ const useNeighboursApi = () => {
 
       return neighbours;
     } catch {
-      navigate("/error-page");
+      toast.error("Disculpa, no hemos podido cargar los vecinos", {
+        className: "toast toast--error",
+      });
 
       dispatch(hideLoadingactionCreator());
     }
-  }, [dispatch, navigate]);
+  }, [dispatch]);
 
   const deleteNeighbourFromApi = useCallback(
     async (neighbourId: string): Promise<void> => {
@@ -44,7 +44,9 @@ const useNeighboursApi = () => {
         dispatch(showLoadingActionCreator());
 
         const { data } = await axios.delete(`/neighbours/${neighbourId}`);
-        toast.success("Hemos eliminado el vecino!");
+        toast.success("Hemos eliminado el vecino!", {
+          className: "toast toast--success",
+        });
 
         dispatch(hideLoadingactionCreator());
 
@@ -52,7 +54,9 @@ const useNeighboursApi = () => {
       } catch {
         dispatch(hideLoadingactionCreator());
 
-        toast.error("Disculpa, no hemos podido eliminar el vecino");
+        toast.error("Disculpa, no hemos podido eliminar el vecino", {
+          className: "toast toast--error",
+        });
       }
     },
     [dispatch],

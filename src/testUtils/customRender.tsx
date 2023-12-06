@@ -1,13 +1,12 @@
 import { render } from "@testing-library/react";
-
 import { MemoryRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import mainTheme from "../styles/MainTheme";
-import GlobalStyle from "../styles/GlobalStyle";
+import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
+import mainTheme from "../styles/MainTheme";
+import GlobalStyle from "../styles/GlobalStyle";
 import { NeighbourStructure } from "../store/features/types";
-import { configureStore } from "@reduxjs/toolkit";
 import { neighboursReducer } from "../store/features/neighbours/neighboursSlice";
 import { uiReducer } from "../store/features/ui/uiSlice";
 import mockNeighbours from "../mocks/mockNeighbours";
