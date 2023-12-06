@@ -6,9 +6,9 @@ const ButtonStyled = styled.button`
   border: solid 1px;
   border-color: ${({ theme }) => theme.color.softColor};
 
-  .button:hover {
-    background-color: ${({ theme }) => theme.color.mainFontColor};
-    color: ${({ theme }) => theme.color.navMenuColor};
+  .disabled {
+    border-color: ${({ theme }) => theme.color.softColor};
+    color: ${({ theme }) => theme.color.softColor};
   }
 `;
 

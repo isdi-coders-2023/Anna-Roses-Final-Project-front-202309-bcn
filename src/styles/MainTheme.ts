@@ -6,6 +6,7 @@ const mainTheme: DefaultTheme = {
     headerColor: "#0a75bc",
     softBackgroundColor: "#fff",
     softColor: "#656565",
+    disabledColor: "#949699",
     errorColor: "#c50000",
     successColor: "#23632e",
   },

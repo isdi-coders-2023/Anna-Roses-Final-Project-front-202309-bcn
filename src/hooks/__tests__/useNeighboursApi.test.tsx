@@ -20,7 +20,7 @@ describe("Given a useNeighboursApi custom hook", () => {
     });
   });
 
-  describe("When it calls its deleteNeighbour method with a neighbourId", () => {
+  describe("When it calls its deleteNeighbour function with a neighbourId", () => {
     test("Then it should delete 'Marta Ibarra Chef'", async () => {
       const expectedNeighbourId = mockNeighbours[0]._id;
       const expectedResponse = {};
