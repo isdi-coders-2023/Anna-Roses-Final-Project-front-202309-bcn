@@ -24,7 +24,7 @@ describe("Given a Card component", () => {
     });
   });
 
-  describe("When it receives a click on the 'Eliminar 'button of 'Marta Ibarra Chef'", () => {
+  describe("When it receives a click on the 'Eliminar' button of 'Marta Ibarra Chef'", () => {
     const buttonText = "Eliminar";
 
     test("Then it should not show 'Marta Ibarra Chef' neighbour", async () => {
@@ -52,7 +52,7 @@ describe("Given a Card component", () => {
 
     test("Then the promise is rejected and it should show a feedback message with 'Disculpa, no hemos podido eliminar el vecino'", async () => {
       server.use(...errorHandlers);
-      const feedbackSuccess = "Disculpa, no hemos podido eliminar el vecino";
+      const feedbackError = "Disculpa, no hemos podido eliminar el vecino";
       customRender(<NeighboursCard neighbour={mockList[0]} />, mockList);
 
       const deleteButton = screen.getByRole("button", {
@@ -60,7 +60,7 @@ describe("Given a Card component", () => {
       });
       await userEvent.click(deleteButton);
 
-      expect(screen.getByText(feedbackSuccess)).toBeInTheDocument();
+      expect(screen.getByText(feedbackError)).toBeInTheDocument();
     });
   });
 });
