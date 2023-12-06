@@ -6,6 +6,7 @@ export interface DefaultTheme {
     headerColor: string;
     navMenuColor: string;
     softColor: string;
+    disabledColor: string;
     errorColor: string;
     successColor: string;
   };

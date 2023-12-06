@@ -41,6 +41,16 @@ button {
   border: none;
   background-color: transparent;
   font: inherit;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: ${({ theme }) => theme.color.mainFontColor};
+  color: ${({ theme }) => theme.color.softBackgroundColor};
+}
+
+button:checked {
+  background-color: ${({ theme }) => theme.color.mainFontColor};
 }
 `;
 
