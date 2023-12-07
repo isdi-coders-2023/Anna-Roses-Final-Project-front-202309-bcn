@@ -8,7 +8,7 @@ import { useAppSelector } from "../../store/hooks";
 import Loading from "../Loading/Loading";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import TostifyStiled from "../../styles/shared/TostifyStyled/TostifyStyled";
-import CreateNeighbourPage from "../../pages/CreateNighbourPage/CreateNighbourPage";
+import CreateNeighbourPage from "../../pages/CreateNeighbourPage/CreateNeighbourPage";
 
 const App = (): React.ReactElement => {
   const uiState = useAppSelector((state) => state.uiState);

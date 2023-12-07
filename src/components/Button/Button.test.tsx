@@ -1,17 +1,14 @@
 import { screen } from "@testing-library/react";
 import Button from "./Button";
-import mockNeighbours from "../../mocks/mockNeighbours";
 import { customRender } from "../../testUtils/customRender";
 import userEvent from "@testing-library/user-event";
 
 describe("Given a Button component", () => {
-  const mockList = mockNeighbours;
-
   describe("When it is rendered", () => {
     test("Then it should show", () => {
       const buttonText = "Eliminar";
 
-      customRender(<Button buttonText={buttonText} />, mockList);
+      customRender(<Button buttonText={buttonText} />);
       const text = screen.getByRole("button", { name: buttonText });
 
       expect(text).toBeInTheDocument();
@@ -25,7 +22,6 @@ describe("Given a Button component", () => {
 
       customRender(
         <Button buttonText={buttonText} actionOnClick={deleteActionMock} />,
-        mockList,
       );
       const button = screen.getByRole("button", { name: buttonText });
       await userEvent.click(button);

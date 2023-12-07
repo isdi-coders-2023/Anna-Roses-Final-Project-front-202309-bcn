@@ -14,10 +14,7 @@ describe("Given a Card component", () => {
       const mockNeighbour = mockList[0];
       const expectedText = mockNeighbour.name;
 
-      customRender(
-        <NeighboursCard key={0} neighbour={mockNeighbour} />,
-        mockList,
-      );
+      customRender(<NeighboursCard key={0} neighbour={mockNeighbour} />);
       const text = screen.getByRole("img", { name: expectedText });
 
       expect(text).toBeInTheDocument();
@@ -30,7 +27,7 @@ describe("Given a Card component", () => {
     test("Then it should not show 'Marta Ibarra Chef' neighbour", async () => {
       const neighbourName = "Marta Ibarra Chef";
 
-      customRender(<NeighboursCard neighbour={mockList[0]} />, mockList);
+      customRender(<NeighboursCard neighbour={mockList[0]} />);
       const button = screen.getByRole("button", { name: buttonText });
       const heading = screen.getByRole("heading", { name: neighbourName });
       await userEvent.click(button);
@@ -42,7 +39,7 @@ describe("Given a Card component", () => {
 
     test("Then it should show a feedback message with 'Hemos eliminado el vecino!'", async () => {
       const feedbackSuccess = "Hemos eliminado el vecino!";
-      customRender(<NeighboursCard neighbour={mockList[0]} />, mockList);
+      customRender(<NeighboursCard neighbour={mockList[0]} />);
 
       const deleteButton = screen.getByRole("button", { name: buttonText });
       await userEvent.click(deleteButton);
@@ -53,7 +50,7 @@ describe("Given a Card component", () => {
     test("Then the promise is rejected and it should show a feedback message with 'Disculpa, no hemos podido eliminar el vecino'", async () => {
       server.use(...errorHandlers);
       const feedbackError = "Disculpa, no hemos podido eliminar el vecino";
-      customRender(<NeighboursCard neighbour={mockList[0]} />, mockList);
+      customRender(<NeighboursCard neighbour={mockList[0]} />);
 
       const deleteButton = screen.getByRole("button", {
         name: buttonText,
