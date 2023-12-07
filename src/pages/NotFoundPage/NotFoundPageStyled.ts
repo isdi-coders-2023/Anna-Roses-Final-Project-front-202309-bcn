@@ -4,13 +4,12 @@ const NotFoundPageStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: fixed;
-  height: 100%;
+  justify-content: center;
   width: 100%;
+  min-height: 100vh;
 
   .not-found {
     &__text {
-      margin-top: 140px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -25,7 +24,7 @@ const NotFoundPageStyled = styled.div`
     &__404 {
       font-size: 2.813rem;
       font-weight: bold;
-      padding: 5px;
+      padding: 20px;
     }
 
     &__page {
