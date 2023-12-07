@@ -10,7 +10,11 @@ const NavMenu = (): React.ReactElement => {
             Home
           </NavLink>
         </li>
-        <li className="nav-menu__item">Añadir</li>
+        <li className="nav-menu__item">
+          <NavLink className="nav-menu__link" to={"/create"}>
+            Añadir
+          </NavLink>
+        </li>
       </ul>
     </NavMenuStyled>
   );

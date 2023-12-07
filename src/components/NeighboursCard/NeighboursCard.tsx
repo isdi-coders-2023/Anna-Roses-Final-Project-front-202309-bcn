@@ -64,15 +64,15 @@ const NeighboursCard = ({
           <span className="card__intro">Comentarios: </span>
           <span className="card__input">{neighbour.coments}</span>
         </li>
-        <div className="card__buttons">
-          <Button
-            buttonText="Eliminar"
-            actionOnClick={() => {
-              deleteNeighbourById(neighbour._id);
-            }}
-          />
-        </div>
       </ul>
+      <div className="card__buttons">
+        <Button
+          buttonText="Eliminar"
+          actionOnClick={() => {
+            deleteNeighbourById(neighbour._id);
+          }}
+        />
+      </div>
     </NeighboursCardStyled>
   );
 };

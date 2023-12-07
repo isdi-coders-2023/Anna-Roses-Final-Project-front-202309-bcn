@@ -7,6 +7,10 @@ const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
 }
 
+body {
+  min-height: 100vh;
+}
+
 body,
 h1,
 h2 {
@@ -47,10 +51,6 @@ button {
 button:hover {
   background-color: ${({ theme }) => theme.color.mainFontColor};
   color: ${({ theme }) => theme.color.softBackgroundColor};
-}
-
-button:checked {
-  background-color: ${({ theme }) => theme.color.mainFontColor};
 }
 `;
 
