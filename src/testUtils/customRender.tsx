@@ -6,22 +6,18 @@ import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import mainTheme from "../styles/MainTheme";
 import GlobalStyle from "../styles/GlobalStyle";
-import { NeighbourStructure } from "../store/features/types";
 import { neighboursReducer } from "../store/features/neighbours/neighboursSlice";
 import { uiReducer } from "../store/features/ui/uiSlice";
 import mockNeighbours from "../mocks/mockNeighbours";
 
-export const customRender = (
-  children: React.ReactElement,
-  mockData: NeighbourStructure[],
-) => {
+export const customRender = (children: React.ReactElement) => {
   const mockStore = configureStore({
     reducer: {
       neighboursState: neighboursReducer,
       uiState: uiReducer,
     },
     preloadedState: {
-      neighboursState: { neighbours: mockData },
+      neighboursState: { neighbours: mockNeighbours },
       uiState: { isLoading: false },
     },
   });

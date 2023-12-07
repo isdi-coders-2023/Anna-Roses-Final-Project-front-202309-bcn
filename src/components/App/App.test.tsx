@@ -1,6 +1,5 @@
 import { screen } from "@testing-library/react";
 import App from "./App";
-import mockNeighbours from "../../mocks/mockNeighbours";
 import {
   customRender,
   customRenderWithoutRouter,
@@ -8,7 +7,6 @@ import {
 import { MemoryRouter } from "react-router-dom";
 
 describe("Given an App component", () => {
-  const mockData = mockNeighbours;
   describe("When it is rendered", () => {
     test(
       "Then it should show an image with an alt text 'Mi comunidad favorita logo'",
@@ -16,7 +14,7 @@ describe("Given an App component", () => {
 
     const expectedAltText = "Mi comunidad favorita logo";
 
-    customRender(<App />, mockData);
+    customRender(<App />);
     const altText = screen.getByRole("img", { name: expectedAltText });
 
     expect(altText).toBeInTheDocument();
@@ -27,7 +25,7 @@ describe("Given an App component", () => {
       const homePageTitle = "Administra tu comunidad";
       const homeLink = "Home";
 
-      customRender(<App />, mockData);
+      customRender(<App />);
       const link = screen.getByRole("link", { name: homeLink });
       const title = screen.getByRole("heading", { name: homePageTitle });
 

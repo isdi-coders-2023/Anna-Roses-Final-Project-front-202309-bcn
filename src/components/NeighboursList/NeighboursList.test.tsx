@@ -8,7 +8,7 @@ describe("Given a List component", () => {
     test("Then it should create two images in a list of two neighbours", () => {
       const mockList = mockNeighbours;
 
-      customRender(<NeighboursList />, mockList);
+      customRender(<NeighboursList />);
 
       mockList.forEach((neighbour) => {
         const headings = screen.getByRole("heading", { name: neighbour.name });
