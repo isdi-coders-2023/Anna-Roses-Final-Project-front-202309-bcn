@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const ContainerStyled = styled.div`
+const ContainerStyled = styled.main`
   padding: 10px;
 `;
 
