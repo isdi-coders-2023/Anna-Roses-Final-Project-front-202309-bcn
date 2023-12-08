@@ -1,6 +1,8 @@
+import mockAddNeighbours from "../../../mocks/mockAddNeighbours";
 import mockNeighbours from "../../../mocks/mockNeighbours";
 import { NeighboursStateStructure } from "../types";
 import {
+  addNeighbourActionCreator,
   deleteNeighbourActionCreator,
   loadNeighboursActionCreator,
   neighboursReducer,
@@ -39,6 +41,24 @@ describe("Given a peopleReducer reducer", () => {
       currentNeighbourState.neighbours.forEach((neighbour) => {
         expect(neighbour).not.toHaveProperty("name", expectedDeletedNeighbour);
       });
+    });
+  });
+
+  describe("When it receives a neighbours list, 'Ana Lambea Andorrana' and the action addHotel", () => {
+    test("Then it shoyld return the list of neighbours with 'Ana Lambea Andorrana' in it", () => {
+      const mockList = mockNeighbours;
+      const mockAddNeighbourList = mockAddNeighbours;
+      const initialState: NeighboursStateStructure = { neighbours: mockList };
+      const newNeighbour = mockAddNeighbourList[2];
+
+      const currentNeighbourState = neighboursReducer(
+        initialState,
+        addNeighbourActionCreator(newNeighbour),
+      );
+
+      expect(currentNeighbourState.neighbours).toStrictEqual(
+        mockAddNeighbourList,
+      );
     });
   });
 });

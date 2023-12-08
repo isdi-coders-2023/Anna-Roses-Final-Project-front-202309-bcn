@@ -1,6 +1,6 @@
 import { NeighbourStructure } from "../store/features/types";
 
-const mockNeighbours: NeighbourStructure[] = [
+const mockAddNeighbours: NeighbourStructure[] = [
   {
     _id: "6563639cc4ddfcae99eeb07a",
     name: "Marta Ibarra Chef",
@@ -37,6 +37,25 @@ const mockNeighbours: NeighbourStructure[] = [
     coments: "adeu",
     image: "https://i.ibb.co/KmdzSNJ/minion-karate.webp",
   },
+  {
+    _id: "6570c0bab38c03592160a94e",
+    name: "Ana Lambea Andorrana",
+    floor: "2",
+    door: "1",
+    coefficient: 8,
+    moneyInFavour: 20839,
+    ownerFirst: "Ana Lambea Andorrana",
+    ownerSecond: "",
+    powers: "Propietario",
+    activityKind: "Inversión",
+    isFirstResidence: true,
+    isRented: false,
+    numberOfResidents: 2,
+    yearOfPurchase: 2023,
+    coments:
+      "Tiene 2 gatos y se dedica a la programación. Se pasa el día concinando tofu y esas cosas.",
+    image: "https://i.ibb.co/X4jtP8y/minion-rude.webp",
+  },
 ];
 
-export default mockNeighbours;
+export default mockAddNeighbours;
