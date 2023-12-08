@@ -20,6 +20,11 @@ const NeighboursFormStyled = styled.form`
     &__button {
       text-align: center;
     }
+
+    &__coment {
+      resize: none;
+      height: 80px;
+    }
   }
 
   @media (min-width: 650px) {
