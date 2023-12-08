@@ -17,7 +17,8 @@ const NavMenuStyled = styled.nav`
   }
 
   .active {
-    color: ${({ theme }) => theme.color.softColor};
+    font-weight: bold;
+    text-decoration-line: underline;
   }
 `;
 
