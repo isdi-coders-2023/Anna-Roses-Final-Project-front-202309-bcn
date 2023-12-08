@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
-import mockNeighbours from "../../mocks/mockNeighbours";
 import NeighboursList from "./NeighboursList";
 import { customRender } from "../../testUtils/customRender";
+import { mockNeighbours } from "../../mocks/mockNeighbours";
 
 describe("Given a List component", () => {
   describe("When it is rendered and receives a list of two neighbours", () => {

@@ -1,5 +1,7 @@
-import mockAddNeighbours from "../../../mocks/mockAddNeighbours";
-import mockNeighbours from "../../../mocks/mockNeighbours";
+import {
+  mockAddNeighbours,
+  mockNeighbours,
+} from "../../../mocks/mockNeighbours";
 import { NeighboursStateStructure } from "../types";
 import {
   addNeighbourActionCreator,
