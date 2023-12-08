@@ -9,10 +9,10 @@ export interface NeighbourStructure {
   ownerSecond: string;
   powers: string;
   activityKind: string;
-  isFirstResidence: boolean;
-  isRented: boolean;
+  isFirstResidence: string;
+  isRented: string;
   numberOfResidents: number;
-  yearOfPurchase: number;
+  yearOfPurchase: string;
   coments: string;
   image: string;
 }
