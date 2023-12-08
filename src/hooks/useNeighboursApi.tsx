@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { useAppDispatch } from "../store/hooks";
 import {
   NeighbourStructure,
+  NeighbourWithoutId,
   NeighboursStateStructure,
 } from "../store/features/types";
 import {
@@ -62,7 +63,43 @@ const useNeighboursApi = () => {
     [dispatch],
   );
 
-  return { getNeighboursApi, deleteNeighbourFromApi };
+  const addNeighbourToApi = useCallback(
+    async (
+      newNeighbour: NeighbourWithoutId,
+    ): Promise<NeighbourStructure | undefined> => {
+      dispatch(showLoadingActionCreator());
+
+      try {
+        const {
+          data: { neighbour },
+        } = await axios.post<{ neighbour: NeighbourStructure }>(
+          "/neighbours/create",
+          newNeighbour,
+        );
+
+        dispatch(hideLoadingactionCreator());
+
+        toast.success("Hemos añadido el nuevo vecino", {
+          className: "toast toast--success",
+        });
+
+        return neighbour;
+      } catch (error) {
+        dispatch(hideLoadingactionCreator());
+
+        toast.error("Disculpa, no hemos podido añadir el nuevo vecino", {
+          className: "toast toast--error",
+        });
+      }
+    },
+    [dispatch],
+  );
+
+  return {
+    getNeighboursApi,
+    deleteNeighbourFromApi,
+    addNeighbourToApi,
+  };
 };
 
 export default useNeighboursApi;
