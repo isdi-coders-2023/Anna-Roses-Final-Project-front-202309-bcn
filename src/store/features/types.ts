@@ -5,12 +5,12 @@ export interface NeighbourStructure {
   door: string;
   coefficient: number;
   moneyInFavour: number;
-  ownerFirst: string;
-  ownerSecond: string;
+  firstOwner: string;
+  secondOwner: string;
   powers: string;
   activityKind: string;
-  isFirstResidence: string;
-  isRented: string;
+  firstResidence: string;
+  rented: string;
   numberOfResidents: number;
   yearOfPurchase: string;
   coments: string;

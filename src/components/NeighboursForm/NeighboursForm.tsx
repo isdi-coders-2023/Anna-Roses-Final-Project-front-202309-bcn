@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   NeighbourStructure,
   NeighbourWithoutId,
@@ -19,12 +19,12 @@ const NeighboursForm = ({
     door: "",
     coefficient: 0,
     moneyInFavour: 0,
-    ownerFirst: "",
-    ownerSecond: "",
+    firstOwner: "",
+    secondOwner: "",
     powers: "",
     activityKind: "",
-    isFirstResidence: "",
-    isRented: "",
+    firstResidence: "",
+    rented: "",
     numberOfResidents: 0,
     yearOfPurchase: "",
     coments: "",
@@ -41,12 +41,18 @@ const NeighboursForm = ({
   ) => {
     setNewNeighbour((currentNewNeighbour) => ({
       ...currentNewNeighbour,
-      [event.target.id]: event.target.value !== "",
+      [event.target.id]: event.target.value,
     }));
   };
 
+  useEffect(() => {
+    const newNeighbourValues = Object.values(newNeighbour);
+
+    newNeighbourValues.every((value) => value !== "");
+  }, [newNeighbour]);
+
   const onSubmitForm = (event: React.FormEvent<HTMLFormElement>) => {
-    event?.preventDefault();
+    event.preventDefault();
     submitAction(newNeighbour as NeighbourStructure);
   };
 
@@ -106,30 +112,30 @@ const NeighboursForm = ({
         </label>
         <input
           type="number"
-          min={0}
+          min={-900000}
           max={900000}
           className="form__input"
           id="moneyInFavour"
           onChange={onChangeEditNeighbour}
           required
         />
-        <label htmlFor="ownerFirst" className="form__label">
+        <label htmlFor="firstOwner" className="form__label">
           Propietario 1 (nombre y apellidos)
         </label>
         <input
           type="text"
           className="form__input"
-          id="ownerFirst"
+          id="firstOwner"
           onChange={onChangeEditNeighbour}
           required
         />
-        <label htmlFor="ownerSecond" className="form__label">
+        <label htmlFor="secondOwner" className="form__label">
           Propietario 2 (nombre y apellidos) - (opcional)
         </label>
         <input
           type="text"
           className="form__input"
-          id="ownerSecond"
+          id="secondOwner"
           onChange={onChangeEditNeighbour}
         />
         <label htmlFor="powers" className="form__label">
@@ -182,12 +188,12 @@ const NeighboursForm = ({
             Oficina
           </option>
         </select>
-        <label htmlFor="isFirstResidence" className="form__label">
+        <label htmlFor="firstResidence" className="form__label">
           Es la primera vivienda?
         </label>
         <select
           className="form__input form__select"
-          id="isFirstResidence"
+          id="firstResidence"
           onChange={onChangeEditNeighbour}
           required
         >
@@ -200,13 +206,16 @@ const NeighboursForm = ({
           <option value="no" className="form__select--input">
             No
           </option>
+          <option value="n/a" className="form__select--input">
+            N/A
+          </option>
         </select>
-        <label htmlFor="isRented" className="form__label">
+        <label htmlFor="rented" className="form__label">
           Se alquila?
         </label>
         <select
           className="form__input form__select"
-          id="isRented"
+          id="rented"
           onChange={onChangeEditNeighbour}
           required
         >
@@ -243,22 +252,22 @@ const NeighboursForm = ({
           onChange={onChangeEditNeighbour}
           required
         />
-        <label htmlFor="imageUrl" className="form__label">
+        <label htmlFor="image" className="form__label">
           Foto URL
         </label>
         <input
           type="url"
           className="form__input"
-          id="imageUrl"
+          id="image"
           onChange={onChangeEditNeighbour}
           required
         />
-        <label htmlFor="coment" className="form__label">
+        <label htmlFor="coments" className="form__label">
           Comentarios (opcional)
         </label>
         <textarea
           className="form__input form__coment"
-          id="coment"
+          id="coments"
           onChange={onChangeEditNeighbour}
           required
         />
