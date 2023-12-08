@@ -1,6 +1,6 @@
 // src/mocks/handlers.js
 import { http, HttpResponse } from "msw";
-import mockNeighbours from "./mockNeighbours";
+import { mockNeighbours } from "./mockNeighbours";
 
 const urlApi = import.meta.env.VITE_API_URL;
 

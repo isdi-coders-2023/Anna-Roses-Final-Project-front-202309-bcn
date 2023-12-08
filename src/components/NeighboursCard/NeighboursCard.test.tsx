@@ -1,10 +1,10 @@
 import { screen, waitFor } from "@testing-library/react";
-import mockNeighbours from "../../mocks/mockNeighbours";
 import NeighboursCard from "./NeighboursCard";
 import { customRender } from "../../testUtils/customRender";
 import userEvent from "@testing-library/user-event";
 import { server } from "../../mocks/node";
 import { errorHandlers } from "../../mocks/handlers";
+import { mockNeighbours } from "../../mocks/mockNeighbours";
 
 describe("Given a Card component", () => {
   const mockList = mockNeighbours;
