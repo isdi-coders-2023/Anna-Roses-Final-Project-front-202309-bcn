@@ -1,6 +1,6 @@
 import {
   hideErrorActionCreator,
-  hideLoadingactionCreator,
+  hideLoadingActionCreator,
   showErrorActionCreator,
   showLoadingActionCreator,
   uiReducer,
@@ -26,7 +26,7 @@ describe("Given a hideLoading minireducer", () => {
       const initialMockedUiState = { isLoading: false };
       const isLoadingFalse = uiReducer(
         initialMockedUiState,
-        hideLoadingactionCreator(),
+        hideLoadingActionCreator(),
       );
 
       expect(isLoadingFalse).toStrictEqual(initialMockedUiState);
