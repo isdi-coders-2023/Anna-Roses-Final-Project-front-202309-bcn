@@ -11,11 +11,13 @@ import {
   hideLoadingactionCreator,
   showLoadingActionCreator,
 } from "../store/features/ui/uiSlice";
+import { useNavigate } from "react-router-dom";
 
 const useNeighboursApi = () => {
   axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const getNeighboursApi = useCallback(async (): Promise<
     NeighboursStateStructure | undefined
@@ -78,6 +80,7 @@ const useNeighboursApi = () => {
         );
 
         dispatch(hideLoadingactionCreator());
+        navigate("/home");
 
         toast.success("Hemos añadido el nuevo vecino", {
           className: "toast toast--success",
@@ -87,12 +90,15 @@ const useNeighboursApi = () => {
       } catch (error) {
         dispatch(hideLoadingactionCreator());
 
-        toast.error("Disculpa, no hemos podido añadir el nuevo vecino", {
-          className: "toast toast--error",
-        });
+        toast.error(
+          "No hemos podido añadir el nuevo vecino, inténtalo de nuevo",
+          {
+            className: "toast toast--error",
+          },
+        );
       }
     },
-    [dispatch],
+    [dispatch, navigate],
   );
 
   return {
