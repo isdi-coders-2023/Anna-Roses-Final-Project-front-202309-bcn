@@ -130,7 +130,7 @@ const NeighboursForm = ({
           required
         />
         <label htmlFor="secondOwner" className="form__label">
-          Propietario 2 (nombre y apellidos) - (opcional)
+          Propietario 2 (nombre y apellidos)
         </label>
         <input
           type="text"
@@ -263,7 +263,7 @@ const NeighboursForm = ({
           required
         />
         <label htmlFor="coments" className="form__label">
-          Comentarios (opcional)
+          Comentarios
         </label>
         <textarea
           className="form__input form__coment"

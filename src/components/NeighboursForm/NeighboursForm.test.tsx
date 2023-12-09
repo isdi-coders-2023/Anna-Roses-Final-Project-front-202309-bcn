@@ -5,6 +5,7 @@ import userEvent from "@testing-library/user-event";
 
 describe("Given a NeighboursForm component", () => {
   const actionOnClick = vi.fn();
+  const addButtonText = "Añadir";
 
   describe("When it is rendered", () => {
     test("Then it should show a form with a 'Nombre y apellidos' text label", () => {
@@ -17,10 +18,8 @@ describe("Given a NeighboursForm component", () => {
     });
 
     test("Then it should show a button with the text 'Añadir'", () => {
-      const expectedButtonText = "Añadir";
-
       customRender(<NeighboursForm submitAction={actionOnClick} />);
-      const button = screen.getByRole("button", { name: expectedButtonText });
+      const button = screen.getByRole("button", { name: addButtonText });
 
       expect(button).toBeInTheDocument();
     });
@@ -49,6 +48,55 @@ describe("Given a NeighboursForm component", () => {
       fireEvent.submit(neighbourForm);
 
       expect(actionOnClick).toHaveBeenCalled();
+    });
+  });
+
+  describe("When the user fills the inputs of the form with a new neighbour information", () => {
+    test("Then it should call its submitAction function'", async () => {
+      const stringLabelText = [
+        "Nombre y apellidos",
+        "Piso (nº)",
+        "Puerta (nº o letra)",
+        "Propietario 1 (nombre y apellidos)",
+        "Propietario 2 (nombre y apellidos)",
+        "Poderes",
+        "Tipo de actividad",
+        "Es la primera vivienda?",
+        "Se alquila?",
+        "Comentarios",
+        "Foto URL",
+      ];
+      const stringInput = "http://cosetes.com";
+      const numberLabelText = [
+        "Coeficiente (%)",
+        "Dinero a favor (€)",
+        "Número de residentes (nº)",
+      ];
+      const numberInput = 3;
+      const dateLabelText = ["Fecha de adquisición"];
+      const dateInput = "2022-01-01";
+
+      customRender(<NeighboursForm submitAction={actionOnClick} />);
+
+      for (const labelText of stringLabelText) {
+        const inputElement = screen.getByLabelText(labelText);
+        await userEvent.type(inputElement, stringInput);
+      }
+
+      for (const labelText of numberLabelText) {
+        const inputElement = screen.getByLabelText(labelText);
+        await userEvent.type(inputElement, numberInput.toString());
+      }
+
+      for (const labelText of dateLabelText) {
+        const inputElement = screen.getByLabelText(labelText);
+        await userEvent.type(inputElement, dateInput);
+      }
+
+      const addButton = screen.getByRole("button", { name: addButtonText });
+      await userEvent.click(addButton);
+
+      await expect(actionOnClick).toHaveBeenCalled();
     });
   });
 });
