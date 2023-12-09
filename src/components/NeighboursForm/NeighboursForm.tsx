@@ -248,7 +248,7 @@ const NeighboursForm = ({
           type="date"
           className="form__input"
           id="yearOfPurchase"
-          min="1900-1-1"
+          min={1900 - 1 - 1}
           onChange={onChangeEditNeighbour}
           required
         />

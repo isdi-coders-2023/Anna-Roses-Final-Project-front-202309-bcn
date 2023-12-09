@@ -60,7 +60,7 @@ describe("Given an App component", () => {
       server.use(...errorHandlers);
       const path = "/create";
       const errorMessage =
-        "No hemos podido añadir el nuevo vecino, inténtalo de nuevo";
+        "No hemos podido añadir al nuevo vecino, vuelve a intentarlo";
 
       customRenderWithoutRouter(
         <MemoryRouter initialEntries={[path]}>
