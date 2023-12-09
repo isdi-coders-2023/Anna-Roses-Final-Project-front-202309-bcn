@@ -1,24 +1,27 @@
 import styled from "styled-components";
 
-const NeighboursFormStyled = styled.form`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
+const NeighboursFormStyled = styled.div`
   .form {
     display: flex;
+    justify-content: center;
     flex-direction: column;
+    align-items: flex-start;
     margin-bottom: 30px;
+    width: 100%;
 
     &__input {
       margin: 10px 0 20px 0;
       padding: 6px;
       font-size: 16px;
       height: 40px;
+      width: 100%;
     }
 
     &__button {
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
     }
 
     &__coment {
@@ -27,12 +30,12 @@ const NeighboursFormStyled = styled.form`
     }
   }
 
+  @media (max-width: 650px) {
+    width: 100%;
+  }
+
   @media (min-width: 650px) {
-    .form {
-      &__input {
-        width: 630px;
-      }
-    }
+    width: 630px;
   }
 `;
 

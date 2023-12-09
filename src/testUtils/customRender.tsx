@@ -3,12 +3,13 @@ import { MemoryRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-import { ToastContainer } from "react-toastify";
 import mainTheme from "../styles/MainTheme";
 import GlobalStyle from "../styles/GlobalStyle";
 import { neighboursReducer } from "../store/features/neighbours/neighboursSlice";
 import { uiReducer } from "../store/features/ui/uiSlice";
 import { mockNeighbours } from "../mocks/mockNeighbours";
+import TostifyStiled from "../styles/shared/TostifyStyled/TostifyStyled";
+import ScrollToTop from "../utils/ScrollToTopFunction";
 
 export const customRender = (children: React.ReactElement) => {
   const mockStore = configureStore({
@@ -26,7 +27,8 @@ export const customRender = (children: React.ReactElement) => {
     <MemoryRouter>
       <Provider store={mockStore}>
         <ThemeProvider theme={mainTheme}>
-          <ToastContainer />
+          <TostifyStiled />
+          <ScrollToTop />
           <GlobalStyle />
           {children}
         </ThemeProvider>
