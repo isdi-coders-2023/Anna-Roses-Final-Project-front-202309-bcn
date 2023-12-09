@@ -34,7 +34,7 @@ const uiSlice = createSlice({
 
 export const {
   showLoading: showLoadingActionCreator,
-  hideLoading: hideLoadingactionCreator,
+  hideLoading: hideLoadingActionCreator,
   showError: showErrorActionCreator,
   hideError: hideErrorActionCreator,
 } = uiSlice.actions;
