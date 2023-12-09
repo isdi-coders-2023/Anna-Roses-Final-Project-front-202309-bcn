@@ -57,12 +57,8 @@ const NeighboursForm = ({
   };
 
   return (
-    <NeighboursFormStyled
-      className="form"
-      onSubmit={onSubmitForm}
-      autoComplete="off"
-    >
-      <div className="form">
+    <NeighboursFormStyled>
+      <form className="form" onSubmit={onSubmitForm} autoComplete="off">
         <label htmlFor="name" className="form__label">
           Nombre y apellidos
         </label>
@@ -271,10 +267,10 @@ const NeighboursForm = ({
           onChange={onChangeEditNeighbour}
           required
         />
-        <div className="form__label form__button">
+        <div className="form__button">
           <Button buttonText="Añadir" />
         </div>
-      </div>
+      </form>
     </NeighboursFormStyled>
   );
 };
