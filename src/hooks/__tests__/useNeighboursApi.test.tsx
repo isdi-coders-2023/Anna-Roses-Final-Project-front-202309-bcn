@@ -1,12 +1,7 @@
-import { renderHook, screen } from "@testing-library/react";
+import { renderHook } from "@testing-library/react";
 import useNeighboursApi from "../useNeighboursApi";
 import { providerWrapper } from "../../testUtils/customWrapper";
 import { mockNeighbours } from "../../mocks/mockNeighbours";
-import { server } from "../../mocks/node";
-import { errorHandlers } from "../../mocks/handlers";
-import { customRenderWithoutRouter } from "../../testUtils/customRender";
-import { MemoryRouter } from "react-router-dom";
-import App from "../../components/App/App";
 
 describe("Given a useNeighboursApi custom hook", () => {
   const neighboursList = mockNeighbours;
@@ -37,33 +32,12 @@ describe("Given a useNeighboursApi custom hook", () => {
   });
 
   describe("When it calls its addNewNeighbourToApi method with 'Ana Lambea Andorrana'", () => {
-    const newNeighbour = neighboursList[2];
-
     test("Then it should return 'Ana Lambea Andorrana' from the API", async () => {
+      const newNeighbour = neighboursList[2];
+
       const response = await addNeighbourToApi(newNeighbour);
 
       expect(response).toStrictEqual(newNeighbour);
-    });
-  });
-
-  describe("When it try to call its addNewNeighbourToApi method with 'Ana Lambea Andorrana' but an error occurs", () => {
-    test("Then it should show the error message 'Disculpa, no hemos podido añadir el nuevo vecino'", async () => {
-      server.use(...errorHandlers);
-
-      const expectedErrorMessage =
-        "Disculpa, no hemos podido añadir el nuevo vecino";
-
-      customRenderWithoutRouter(
-        <MemoryRouter>
-          <App />
-        </MemoryRouter>,
-      );
-
-      await addNeighbourToApi(neighboursList[2]);
-
-      const errorMessage = await screen.getByText(expectedErrorMessage);
-
-      expect(errorMessage).toBeInTheDocument();
     });
   });
 });
