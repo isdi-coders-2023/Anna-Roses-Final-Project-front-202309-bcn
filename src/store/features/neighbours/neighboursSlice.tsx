@@ -3,6 +3,7 @@ import { NeighbourStructure, NeighboursStateStructure } from "../types";
 
 const initialNeighbours: NeighboursStateStructure = {
   neighbours: [],
+  selectedNeighbour: {} as NeighbourStructure,
 };
 
 const neighbourSlice = createSlice({
@@ -34,6 +35,14 @@ const neighbourSlice = createSlice({
       ...currentState,
       neighbours: [...currentState.neighbours, action.payload],
     }),
+
+    loadSelectedNeighbour: (
+      currentState,
+      action: PayloadAction<NeighbourStructure>,
+    ) => ({
+      ...currentState,
+      selectedNeighbour: action.payload,
+    }),
   },
 });
 
@@ -41,6 +50,7 @@ export const {
   loadNeighbours: loadNeighboursActionCreator,
   deleteNeighbour: deleteNeighbourActionCreator,
   addNeighbour: addNeighbourActionCreator,
+  loadSelectedNeighbour: loadSelectedNeighbourActionCreator,
 } = neighbourSlice.actions;
 
 export const neighboursReducer = neighbourSlice.reducer;
