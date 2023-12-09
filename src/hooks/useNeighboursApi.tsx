@@ -11,11 +11,13 @@ import {
   hideLoadingactionCreator,
   showLoadingActionCreator,
 } from "../store/features/ui/uiSlice";
+import { useNavigate } from "react-router-dom";
 
 const useNeighboursApi = () => {
   axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const getNeighboursApi = useCallback(async (): Promise<
     NeighboursStateStructure | undefined
@@ -45,7 +47,7 @@ const useNeighboursApi = () => {
         dispatch(showLoadingActionCreator());
 
         const { data } = await axios.delete(`/neighbours/${neighbourId}`);
-        toast.success("Hemos eliminado el vecino!", {
+        toast.success("Hemos eliminado al vecino!", {
           className: "toast toast--success",
         });
 
@@ -55,7 +57,7 @@ const useNeighboursApi = () => {
       } catch {
         dispatch(hideLoadingactionCreator());
 
-        toast.error("Disculpa, no hemos podido eliminar el vecino", {
+        toast.error("Disculpa, no hemos podido eliminar al vecino", {
           className: "toast toast--error",
         });
       }
@@ -78,8 +80,9 @@ const useNeighboursApi = () => {
         );
 
         dispatch(hideLoadingactionCreator());
+        navigate("/home");
 
-        toast.success("Hemos añadido el nuevo vecino", {
+        toast.success("Hemos añadido al nuevo vecino", {
           className: "toast toast--success",
         });
 
@@ -87,12 +90,15 @@ const useNeighboursApi = () => {
       } catch (error) {
         dispatch(hideLoadingactionCreator());
 
-        toast.error("Disculpa, no hemos podido añadir el nuevo vecino", {
-          className: "toast toast--error",
-        });
+        toast.error(
+          "No hemos podido añadir al nuevo vecino, vuelve a intentarlo",
+          {
+            className: "toast toast--error",
+          },
+        );
       }
     },
-    [dispatch],
+    [dispatch, navigate],
   );
 
   return {

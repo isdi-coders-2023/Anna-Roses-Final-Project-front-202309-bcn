@@ -1,10 +1,15 @@
-import { screen } from "@testing-library/react";
+import { renderHook, screen } from "@testing-library/react";
 import App from "./App";
 import {
   customRender,
   customRenderWithoutRouter,
 } from "../../testUtils/customRender";
 import { MemoryRouter } from "react-router-dom";
+import { server } from "../../mocks/node";
+import { errorHandlers } from "../../mocks/handlers";
+import { mockAnaNeighbour } from "../../mocks/mockNeighbours";
+import useNeighboursApi from "../../hooks/useNeighboursApi";
+import { providerWrapper } from "../../testUtils/customWrapper";
 
 describe("Given an App component", () => {
   describe("When it is rendered", () => {
@@ -47,6 +52,32 @@ describe("Given an App component", () => {
       const alarmModeImage = screen.getByAltText(expectedAltText);
 
       expect(alarmModeImage).toBeInTheDocument();
+    });
+  });
+
+  describe("When it is called with its addNeighbourToApi function with 'Ana Lambea Andorrana' and the response fails", () => {
+    test("Then it should show the text 'No hemos podido añadir el nuevo vecino, inténtalo de nuevo'", async () => {
+      server.use(...errorHandlers);
+      const path = "/create";
+      const errorMessage =
+        "No hemos podido añadir al nuevo vecino, vuelve a intentarlo";
+
+      customRenderWithoutRouter(
+        <MemoryRouter initialEntries={[path]}>
+          <App />
+        </MemoryRouter>,
+      );
+
+      const {
+        result: {
+          current: { addNeighbourToApi },
+        },
+      } = renderHook(() => useNeighboursApi(), { wrapper: providerWrapper });
+
+      await addNeighbourToApi(mockAnaNeighbour);
+      const feedback = await screen.findByText(errorMessage);
+
+      expect(feedback).toBeInTheDocument();
     });
   });
 });

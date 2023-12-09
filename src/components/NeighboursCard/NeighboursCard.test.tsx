@@ -37,19 +37,22 @@ describe("Given a Card component", () => {
       });
     });
 
-    test("Then it should show a feedback message with 'Hemos eliminado el vecino!'", async () => {
-      const feedbackSuccess = "Hemos eliminado el vecino!";
+    test("Then it should show a feedback message with 'Hemos eliminado al vecino!'", async () => {
+      const feedbackSuccess = "Hemos eliminado al vecino!";
       customRender(<NeighboursCard neighbour={mockList[0]} />);
 
       const deleteButton = screen.getByRole("button", { name: buttonText });
       await userEvent.click(deleteButton);
 
-      expect(screen.getByText(feedbackSuccess)).toBeInTheDocument();
+      const feedback = screen.getByText(feedbackSuccess);
+
+      expect(feedback).toBeInTheDocument();
     });
 
-    test("Then the promise is rejected and it should show a feedback message with 'Disculpa, no hemos podido eliminar el vecino'", async () => {
+    test("Then the promise is rejected and it should show a feedback message with 'Disculpa, no hemos podido eliminar al vecino'", async () => {
       server.use(...errorHandlers);
-      const feedbackError = "Disculpa, no hemos podido eliminar el vecino";
+
+      const feedbackError = "Disculpa, no hemos podido eliminar al vecino";
       customRender(<NeighboursCard neighbour={mockList[0]} />);
 
       const deleteButton = screen.getByRole("button", {
@@ -57,7 +60,9 @@ describe("Given a Card component", () => {
       });
       await userEvent.click(deleteButton);
 
-      expect(screen.getByText(feedbackError)).toBeInTheDocument();
+      const errorMessage = screen.getByText(feedbackError);
+
+      expect(errorMessage).toBeInTheDocument();
     });
   });
 });
