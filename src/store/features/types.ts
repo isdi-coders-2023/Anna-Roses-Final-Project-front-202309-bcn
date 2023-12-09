@@ -19,6 +19,7 @@ export interface NeighbourStructure {
 
 export interface NeighboursStateStructure {
   neighbours: NeighbourStructure[];
+  selectedNeighbour: NeighbourStructure;
 }
 
 export type NeighbourWithoutId = Omit<NeighbourStructure, "_id">;
