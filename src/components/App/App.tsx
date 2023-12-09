@@ -9,6 +9,7 @@ import Loading from "../Loading/Loading";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import TostifyStiled from "../../styles/shared/TostifyStyled/TostifyStyled";
 import CreateNeighbourPage from "../../pages/CreateNeighbourPage/CreateNeighbourPage";
+import ScrollToTop from "../../utils/ScrollToTopFunction";
 
 const App = (): React.ReactElement => {
   const uiState = useAppSelector((state) => state.uiState);
@@ -18,6 +19,7 @@ const App = (): React.ReactElement => {
       <Header />
       {uiState.isLoading && <Loading />}
       <TostifyStiled icon={false} autoClose={10000} />
+      <ScrollToTop />
       <ContainerStyled className="main-container">
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
