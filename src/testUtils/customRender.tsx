@@ -10,6 +10,7 @@ import { uiReducer } from "../store/features/ui/uiSlice";
 import { mockNeighbours } from "../mocks/mockNeighbours";
 import TostifyStiled from "../styles/shared/TostifyStyled/TostifyStyled";
 import ScrollToTop from "../utils/ScrollToTopFunction";
+import { NeighbourStructure } from "../store/features/types";
 
 export const customRender = (children: React.ReactElement) => {
   const mockStore = configureStore({
@@ -18,7 +19,10 @@ export const customRender = (children: React.ReactElement) => {
       uiState: uiReducer,
     },
     preloadedState: {
-      neighboursState: { neighbours: mockNeighbours },
+      neighboursState: {
+        neighbours: mockNeighbours,
+        selectedNeighbour: {} as NeighbourStructure,
+      },
       uiState: { isLoading: false },
     },
   });
@@ -44,7 +48,10 @@ export const customRenderWithoutRouter = (children: React.ReactElement) => {
       uiState: uiReducer,
     },
     preloadedState: {
-      neighboursState: { neighbours: mockNeighbours },
+      neighboursState: {
+        neighbours: mockNeighbours,
+        selectedNeighbour: {} as NeighbourStructure,
+      },
       uiState: { isLoading: false },
     },
   });
