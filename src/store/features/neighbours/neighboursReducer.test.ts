@@ -47,7 +47,7 @@ describe("Given a peopleReducer reducer", () => {
   });
 
   describe("When it receives a neighbours list, 'Ana Lambea Andorrana' and the action addNeighbour", () => {
-    test("Then it shoyld return the list of neighbours with 'Ana Lambea Andorrana' in it", () => {
+    test("Then it should return the list of neighbours with 'Ana Lambea Andorrana' in it", () => {
       const mockList = mockNeighbours;
       const mockAddNeighbourList = mockAddNeighbours;
       const initialState: NeighboursStateStructure = { neighbours: mockList };

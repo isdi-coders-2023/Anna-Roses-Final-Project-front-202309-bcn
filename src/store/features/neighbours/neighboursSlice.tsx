@@ -28,7 +28,7 @@ const neighbourSlice = createSlice({
     }),
 
     addNeighbour: (
-      currentState,
+      currentState: NeighboursStateStructure,
       action: PayloadAction<NeighbourStructure>,
     ): NeighboursStateStructure => ({
       ...currentState,

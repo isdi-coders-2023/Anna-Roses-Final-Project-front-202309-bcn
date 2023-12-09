@@ -49,6 +49,7 @@ describe("Given a Card component", () => {
 
     test("Then the promise is rejected and it should show a feedback message with 'Disculpa, no hemos podido eliminar el vecino'", async () => {
       server.use(...errorHandlers);
+
       const feedbackError = "Disculpa, no hemos podido eliminar el vecino";
       customRender(<NeighboursCard neighbour={mockList[0]} />);
 
@@ -57,7 +58,9 @@ describe("Given a Card component", () => {
       });
       await userEvent.click(deleteButton);
 
-      expect(screen.getByText(feedbackError)).toBeInTheDocument();
+      const errorMessage = screen.getByText(feedbackError);
+
+      expect(errorMessage).toBeInTheDocument();
     });
   });
 });
