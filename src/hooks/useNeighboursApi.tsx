@@ -102,10 +102,34 @@ const useNeighboursApi = () => {
     [dispatch, navigate],
   );
 
+  const loadSelectedNeighbour = useCallback(
+    async (id: string): Promise<NeighbourStructure | void> => {
+      try {
+        dispatch(showLoadingActionCreator());
+
+        const {
+          data: { neighbour },
+        } = await axios.get<{ neighbour: NeighbourStructure }>(
+          `/neighbours/${id}`,
+        );
+
+        dispatch(hideLoadingActionCreator);
+
+        return neighbour;
+      } catch {
+        toast.error("Disculpa, no hemos podido cargar al vecino", {
+          className: "toast toast--error",
+        });
+      }
+    },
+    [dispatch],
+  );
+
   return {
     getNeighboursApi,
     deleteNeighbourFromApi,
     addNeighbourToApi,
+    loadSelectedNeighbour,
   };
 };
 
