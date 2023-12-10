@@ -113,7 +113,7 @@ const useNeighboursApi = () => {
           `/neighbours/${id}`,
         );
 
-        dispatch(hideLoadingActionCreator);
+        dispatch(hideLoadingActionCreator());
 
         return neighbour;
       } catch {
