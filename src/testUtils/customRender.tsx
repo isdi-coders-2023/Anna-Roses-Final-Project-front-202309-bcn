@@ -9,7 +9,7 @@ import { neighboursReducer } from "../store/features/neighbours/neighboursSlice"
 import { uiReducer } from "../store/features/ui/uiSlice";
 import { mockNeighbours } from "../mocks/mockNeighbours";
 import TostifyStiled from "../styles/shared/TostifyStyled/TostifyStyled";
-import ScrollToTop from "../utils/ScrollToTopFunction";
+import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import { NeighbourStructure } from "../store/features/types";
 
 export const customRender = (children: React.ReactElement) => {

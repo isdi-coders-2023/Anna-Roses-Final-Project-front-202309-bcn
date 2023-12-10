@@ -9,7 +9,7 @@ import Loading from "../Loading/Loading";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import TostifyStiled from "../../styles/shared/TostifyStyled/TostifyStyled";
 import CreateNeighbourPage from "../../pages/CreateNeighbourPage/CreateNeighbourPage";
-import ScrollToTop from "../../utils/ScrollToTopFunction";
+import ScrollToTop from "../ScrollToTop/ScrollToTop";
 
 const App = (): React.ReactElement => {
   const uiState = useAppSelector((state) => state.uiState);
