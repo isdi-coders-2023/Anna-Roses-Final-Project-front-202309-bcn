@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useCallback } from "react";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../store/hooks";
 import {
   NeighbourStructure,
@@ -11,7 +12,6 @@ import {
   hideLoadingActionCreator,
   showLoadingActionCreator,
 } from "../store/features/ui/uiSlice";
-import { useNavigate } from "react-router-dom";
 
 const useNeighboursApi = () => {
   axios.defaults.baseURL = import.meta.env.VITE_API_URL;
