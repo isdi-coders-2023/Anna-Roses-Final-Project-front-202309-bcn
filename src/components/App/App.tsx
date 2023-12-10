@@ -10,6 +10,7 @@ import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import TostifyStiled from "../../styles/shared/TostifyStyled/TostifyStyled";
 import CreateNeighbourPage from "../../pages/CreateNeighbourPage/CreateNeighbourPage";
 import ScrollToTop from "../ScrollToTop/ScrollToTop";
+import NeighbourDetailPage from "../../pages/NeighbourDetailPage/NeighbourDetailPage";
 
 const App = (): React.ReactElement => {
   const uiState = useAppSelector((state) => state.uiState);
@@ -27,6 +28,10 @@ const App = (): React.ReactElement => {
           <Route path="/create" element={<CreateNeighbourPage />} />
           <Route path="/*" element={<NotFoundPage />} />
           <Route path="/error-page" element={<NotFoundPage />} />
+          <Route
+            path="/detalle/:neighbourId"
+            element={<NeighbourDetailPage />}
+          />
         </Routes>
       </ContainerStyled>
       <NavMenu />
