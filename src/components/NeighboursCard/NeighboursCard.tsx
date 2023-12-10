@@ -1,12 +1,15 @@
+import { useNavigate } from "react-router-dom";
 import useNeighboursApi from "../../hooks/useNeighboursApi";
 import {
   deleteNeighbourActionCreator,
   loadNeighboursActionCreator,
+  loadSelectedNeighbourActionCreator,
 } from "../../store/features/neighbours/neighboursSlice";
 import { NeighbourStructure } from "../../store/features/types";
 import { useAppDispatch } from "../../store/hooks";
 import Button from "../Button/Button";
 import NeighboursCardStyled from "./NeighboursCardStyled";
+import { useCallback } from "react";
 
 interface NeighbourCardProps {
   neighbour: NeighbourStructure;
@@ -16,7 +19,9 @@ const NeighboursCard = ({
   neighbour,
 }: NeighbourCardProps): React.ReactElement => {
   const dispatch = useAppDispatch();
-  const { getNeighboursApi, deleteNeighbourFromApi } = useNeighboursApi();
+  const navigate = useNavigate();
+  const { getNeighboursApi, deleteNeighbourFromApi, loadSelectedNeighbour } =
+    useNeighboursApi();
 
   const deleteNeighbourById = async (neighbourId: string) => {
     await deleteNeighbourFromApi(neighbourId);
@@ -28,6 +33,18 @@ const NeighboursCard = ({
       dispatch(loadNeighboursActionCreator(neighbours.neighbours));
     }
   };
+
+  const getNeighbourById = useCallback(() => {
+    (async () => {
+      const neighbourById = await loadSelectedNeighbour(neighbour._id);
+
+      if (neighbourById) {
+        dispatch(loadSelectedNeighbourActionCreator(neighbourById));
+
+        navigate(`/detalle/${neighbour._id}`);
+      }
+    })();
+  }, [dispatch, loadSelectedNeighbour, navigate, neighbour._id]);
 
   return (
     <NeighboursCardStyled className="card">
@@ -66,6 +83,12 @@ const NeighboursCard = ({
         </li>
       </ul>
       <div className="card__buttons">
+        <Button
+          buttonText="Detalle"
+          actionOnClick={() => {
+            getNeighbourById();
+          }}
+        />
         <Button
           buttonText="Eliminar"
           actionOnClick={() => {
