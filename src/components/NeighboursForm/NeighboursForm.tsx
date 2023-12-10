@@ -146,13 +146,13 @@ const NeighboursForm = ({
           <option value="" className="form__select--input">
             Seleccionar
           </option>
-          <option value="property" className="form__select--input">
+          <option value="Propietario" className="form__select--input">
             Propietario
           </option>
-          <option value="administrator" className="form__select--input">
+          <option value="Administrador" className="form__select--input">
             Administrador
           </option>
-          <option value="tenant" className="form__select--input">
+          <option value="Inquilino" className="form__select--input">
             Inquilino
           </option>
         </select>
@@ -168,19 +168,19 @@ const NeighboursForm = ({
           <option value="" className="form__select--input">
             Seleccionar
           </option>
-          <option value="livingPlace" className="form__select--input">
+          <option value="Vivienda" className="form__select--input">
             Vivienda
           </option>
-          <option value="rent" className="form__select--input">
+          <option value="Alquiler" className="form__select--input">
             Alquiler
           </option>
-          <option value="business" className="form__select--input">
+          <option value="Negocio" className="form__select--input">
             Negocio
           </option>
-          <option value="restaurant" className="form__select--input">
+          <option value="Restaurante" className="form__select--input">
             Restaurante
           </option>
-          <option value="office" className="form__select--input">
+          <option value="Oficina" className="form__select--input">
             Oficina
           </option>
         </select>
@@ -196,13 +196,13 @@ const NeighboursForm = ({
           <option value="" className="form__select--input">
             Seleccionar
           </option>
-          <option value="yes" className="form__select--input">
+          <option value="Si" className="form__select--input">
             Si
           </option>
-          <option value="no" className="form__select--input">
+          <option value="No" className="form__select--input">
             No
           </option>
-          <option value="n/a" className="form__select--input">
+          <option value="N/A" className="form__select--input">
             N/A
           </option>
         </select>
@@ -218,10 +218,10 @@ const NeighboursForm = ({
           <option value="" className="form__select--input">
             Seleccionar
           </option>
-          <option value="yes" className="form__select--input">
+          <option value="Si" className="form__select--input">
             Si
           </option>
-          <option value="no" className="form__select--input">
+          <option value="No" className="form__select--input">
             No
           </option>
         </select>
