@@ -146,15 +146,9 @@ const NeighboursForm = ({
           <option value="" className="form__select--input">
             Seleccionar
           </option>
-          <option value="Propietario" className="form__select--input">
-            Propietario
-          </option>
-          <option value="Administrador" className="form__select--input">
-            Administrador
-          </option>
-          <option value="Inquilino" className="form__select--input">
-            Inquilino
-          </option>
+          <option value="Propietario">Propietario</option>
+          <option value="Administrador">Administrador</option>
+          <option value="Inquilino">Inquilino</option>
         </select>
         <label htmlFor="activityKind" className="form__label">
           Tipo de actividad
@@ -165,24 +159,12 @@ const NeighboursForm = ({
           onChange={onChangeEditNeighbour}
           required
         >
-          <option value="" className="form__select--input">
-            Seleccionar
-          </option>
-          <option value="Vivienda" className="form__select--input">
-            Vivienda
-          </option>
-          <option value="Alquiler" className="form__select--input">
-            Alquiler
-          </option>
-          <option value="Negocio" className="form__select--input">
-            Negocio
-          </option>
-          <option value="Restaurante" className="form__select--input">
-            Restaurante
-          </option>
-          <option value="Oficina" className="form__select--input">
-            Oficina
-          </option>
+          <option value="">Seleccionar</option>
+          <option value="Vivienda">Vivienda</option>
+          <option value="Alquiler">Alquiler</option>
+          <option value="Negocio">Negocio</option>
+          <option value="Restaurante">Restaurante</option>
+          <option value="Oficina">Oficina</option>
         </select>
         <label htmlFor="firstResidence" className="form__label">
           Es la primera vivienda?
@@ -193,18 +175,10 @@ const NeighboursForm = ({
           onChange={onChangeEditNeighbour}
           required
         >
-          <option value="" className="form__select--input">
-            Seleccionar
-          </option>
-          <option value="Si" className="form__select--input">
-            Si
-          </option>
-          <option value="No" className="form__select--input">
-            No
-          </option>
-          <option value="N/A" className="form__select--input">
-            N/A
-          </option>
+          <option value="">Seleccionar</option>
+          <option value="Si">Si</option>
+          <option value="No">No</option>
+          <option value="N/A">N/A</option>
         </select>
         <label htmlFor="rented" className="form__label">
           Se alquila?
@@ -215,15 +189,9 @@ const NeighboursForm = ({
           onChange={onChangeEditNeighbour}
           required
         >
-          <option value="" className="form__select--input">
-            Seleccionar
-          </option>
-          <option value="Si" className="form__select--input">
-            Si
-          </option>
-          <option value="No" className="form__select--input">
-            No
-          </option>
+          <option value="">Seleccionar</option>
+          <option value="Si">Si</option>
+          <option value="No">No</option>
         </select>
         <label htmlFor="numberOfResidents" className="form__label">
           Número de residentes (nº)

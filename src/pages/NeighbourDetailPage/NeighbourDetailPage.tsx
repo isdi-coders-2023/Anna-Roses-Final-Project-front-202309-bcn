@@ -48,23 +48,23 @@ const NeighbourDetailPage = (): React.ReactElement => {
           <h2 className="detail__item detail__name">{neighbour.name}</h2>
           <div className="detail__items">
             <div className="detail__item">
-              <span className="detail__desc">Piso:</span>
+              <span className="detail__desc">Piso: </span>
               <span className="detail__info">{neighbour.floor}</span>
             </div>
             <div className="detail__item">
-              <span className="detail__desc">Puerta:</span>
+              <span className="detail__desc">Puerta: </span>
               <span className="detail__info">{neighbour.door}</span>
             </div>
             <div className="detail__item">
-              <span className="detail__desc">Coeficiente:</span>
+              <span className="detail__desc">Coeficiente: </span>
               <span className="detail__info">{neighbour.coefficient}%</span>
             </div>
             <div className="detail__item">
-              <span className="detail__desc">Dinero a favor:</span>
+              <span className="detail__desc">Dinero a favor: </span>
               <span className="detail__info">{neighbour.moneyInFavour}€</span>
             </div>
             <div className="detail__item">
-              <span className="detail__desc">Propietario/s:</span>
+              <span className="detail__desc">Propietario/s: </span>
               <span className="detail__info">
                 {neighbour.firstOwner}
                 <br />
@@ -72,33 +72,33 @@ const NeighbourDetailPage = (): React.ReactElement => {
               </span>
             </div>
             <div className="detail__item">
-              <span className="detail__desc">Proderes:</span>
+              <span className="detail__desc">Proderes: </span>
               <span className="detail__info">{neighbour.powers}</span>
             </div>
             <div className="detail__item">
-              <span className="detail__desc">Actividad:</span>
+              <span className="detail__desc">Actividad: </span>
               <span className="detail__info">{neighbour.activityKind}</span>
             </div>
             <div className="detail__item">
-              <span className="detail__desc">1ª vivienda:</span>
+              <span className="detail__desc">1ª vivienda: </span>
               <span className="detail__info">{neighbour.firstResidence}</span>
             </div>
             <div className="detail__item">
-              <span className="detail__desc">De alquiler:</span>
+              <span className="detail__desc">De alquiler: </span>
               <span className="detail__info">{neighbour.rented}</span>
             </div>
             <div className="detail__item">
-              <span className="detail__desc">Nº residentes:</span>
+              <span className="detail__desc">Nº residentes: </span>
               <span className="detail__info">
                 {neighbour.numberOfResidents}
               </span>
             </div>
             <div className="detail__item">
-              <span className="detail__desc">Año de adquisición:</span>
+              <span className="detail__desc">Año de adquisición: </span>
               <span className="detail__info">{neighbour.yearOfPurchase}</span>
             </div>
             <div className="detail__item">
-              <span className="detail__desc">Comentarios:</span>
+              <span className="detail__desc">Comentarios: </span>
               <span className="detail__info">{neighbour.coments}</span>
             </div>
           </div>

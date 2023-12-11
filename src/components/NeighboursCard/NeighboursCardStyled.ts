@@ -37,6 +37,22 @@ const NeighboursCardStyled = styled.article`
       gap: 11px;
       margin-top: 32px;
     }
+
+    &__link {
+      width: 120px;
+      height: 40px;
+      border: solid 1px;
+      border-color: ${({ theme }) => theme.color.softColor};
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &__link:hover {
+      background-color: ${({ theme }) => theme.color.mainFontColor};
+      color: ${({ theme }) => theme.color.softBackgroundColor};
+    }
   }
 `;
 

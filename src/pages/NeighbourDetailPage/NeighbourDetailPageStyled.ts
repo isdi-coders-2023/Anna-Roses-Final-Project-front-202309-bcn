@@ -7,6 +7,7 @@ const NeighbourDetailPageStyled = styled.div`
   align-items: center;
   overflow-wrap: anywhere;
   margin-bottom: 30px;
+  padding: 0px 16px;
 
   .detail {
     &__container {
@@ -32,14 +33,12 @@ const NeighbourDetailPageStyled = styled.div`
     }
 
     &__item {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
       margin-top: 15px;
     }
 
     &__desc {
       width: 50%;
+      font-weight: bold;
     }
 
     &__info {
@@ -57,18 +56,10 @@ const NeighbourDetailPageStyled = styled.div`
     }
   }
 
-  @media (min-width: 630px) {
+  @media (min-width: 500px) {
     .detail {
       &__container {
-        width: 610px;
-      }
-    }
-  }
-
-  @media (min-width: 380px) {
-    .detail {
-      &__desc {
-        font-weight: bold;
+        width: 480px;
       }
     }
   }
