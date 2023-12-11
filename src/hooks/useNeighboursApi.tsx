@@ -19,7 +19,7 @@ const useNeighboursApi = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const getNeighboursApi = useCallback(async (): Promise<
+  const getNeighbours = useCallback(async (): Promise<
     NeighboursStateStructure | undefined
   > => {
     dispatch(showLoadingActionCreator());
@@ -42,12 +42,12 @@ const useNeighboursApi = () => {
     }
   }, [dispatch]);
 
-  const deleteNeighbourFromApi = useCallback(
-    async (neighbourId: string): Promise<void> => {
+  const deleteNeighbour = useCallback(
+    async (id: string): Promise<void> => {
       try {
         dispatch(showLoadingActionCreator());
 
-        const { data } = await axios.delete(`/neighbours/${neighbourId}`);
+        const { data } = await axios.delete(`/neighbours/${id}`);
         toast.success("Hemos eliminado al vecino!", {
           className: "toast toast--success",
         });
@@ -66,7 +66,7 @@ const useNeighboursApi = () => {
     [dispatch],
   );
 
-  const addNeighbourToApi = useCallback(
+  const addNeighbour = useCallback(
     async (
       newNeighbour: NeighbourWithoutId,
     ): Promise<NeighbourStructure | undefined> => {
@@ -125,11 +125,46 @@ const useNeighboursApi = () => {
     [dispatch],
   );
 
+  const modifyNeighbour = useCallback(
+    async (id: string): Promise<NeighbourStructure | void> => {
+      try {
+        dispatch(showLoadingActionCreator());
+
+        const {
+          data: { neighbour },
+        } = await axios.patch<{ neighbour: NeighbourStructure }>(
+          `/neighbours/${id}`,
+        );
+
+        dispatch(hideLoadingActionCreator());
+
+        toast.success("Hemos modificado al nuevo vecino", {
+          className: "toast toast--success",
+        });
+
+        navigate("/home");
+
+        return neighbour;
+      } catch {
+        dispatch(hideLoadingActionCreator());
+
+        toast.error(
+          "Disculpa, no hemos podido modificar al vecino, vuelve a intentarlo",
+          {
+            className: "toast toast--error",
+          },
+        );
+      }
+    },
+    [dispatch, navigate],
+  );
+
   return {
-    getNeighboursApi,
-    deleteNeighbourFromApi,
-    addNeighbourToApi,
+    getNeighboursApi: getNeighbours,
+    deleteNeighbourFromApi: deleteNeighbour,
+    addNeighbourToApi: addNeighbour,
     loadSelectedNeighbour,
+    modifyNeighbour,
   };
 };
 
