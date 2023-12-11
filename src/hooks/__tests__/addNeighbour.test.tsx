@@ -20,7 +20,7 @@ describe("Given a useNeighboursApi custom hook", () => {
     },
   } = renderHook(() => useNeighboursApi(), { wrapper: providerWrapper });
 
-  describe("When it calls its addNewNeighbourToApi method with 'Ana Lambea Andorrana'", () => {
+  describe("When it calls its addNewNeighbour method with 'Ana Lambea Andorrana'", () => {
     test("Then it should return 'Ana Lambea Andorrana' from the API", async () => {
       const newNeighbour = neighboursList[2];
 
@@ -30,7 +30,7 @@ describe("Given a useNeighboursApi custom hook", () => {
     });
   });
 
-  describe("When it is called with its addNeighbourToApi function with 'Ana Lambea Andorrana' and the response fails", () => {
+  describe("When it is called with its addNeighbour function with 'Ana Lambea Andorrana' and the response fails", () => {
     test("Then it should show the text 'No hemos podido añadir el nuevo vecino, inténtalo de nuevo'", async () => {
       server.use(...errorHandlers);
       const path = "/create";

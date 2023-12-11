@@ -4,7 +4,7 @@ import useNeighboursApi from "../useNeighboursApi";
 import { providerWrapper } from "../../testUtils/customWrapper";
 
 describe("Given a useNeighboursApi custom hook", () => {
-  describe("When it renders the information of 'Marta Ibarra Chef' and 'Laura Guitérrez Empoderada'", () => {
+  describe("When it calls getNeighbours with the information of 'Marta Ibarra Chef' and 'Laura Guitérrez Empoderada'", () => {
     test("Then it should show the information of 'Marta Ibarra Chef' and 'Laura Guitérrez Empoderada'", async () => {
       const neighboursList = mockNeighbours;
 
@@ -16,7 +16,7 @@ describe("Given a useNeighboursApi custom hook", () => {
 
       const currentNeighbours = await getNeighboursApi();
 
-      expect(currentNeighbours).toStrictEqual(neighboursList);
+      expect(currentNeighbours).toStrictEqual({ neighbour: neighboursList });
     });
   });
 });
