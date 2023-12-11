@@ -1,9 +1,9 @@
-import { mockNeighbours } from "../../../mocks/mockNeighbours";
-import { NeighbourStructure, NeighboursStateStructure } from "../types";
+import { mockNeighbours } from "../../../../mocks/mockNeighbours";
+import { NeighbourStructure, NeighboursStateStructure } from "../../types";
 import {
   deleteNeighbourActionCreator,
   neighboursReducer,
-} from "./neighboursSlice";
+} from "../neighboursSlice";
 
 describe("Given a neighbourReducer reducer", () => {
   describe("When it receives a list of two neighbours, an existing neighbour id and the deleteNeighbour function", () => {

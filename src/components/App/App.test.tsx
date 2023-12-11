@@ -7,6 +7,9 @@ import {
 import { MemoryRouter } from "react-router-dom";
 
 describe("Given an App component", () => {
+  const spyScrollTo = vi.fn();
+  Object.defineProperty(global.window, "scrollTo", { value: spyScrollTo });
+
   describe("When it is rendered", () => {
     test(
       "Then it should show an image with an alt text 'Mi comunidad favorita logo'",

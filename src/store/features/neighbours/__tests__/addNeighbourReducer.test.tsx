@@ -1,12 +1,12 @@
 import {
   mockAddNeighbours,
   mockNeighbours,
-} from "../../../mocks/mockNeighbours";
-import { NeighbourStructure, NeighboursStateStructure } from "../types";
+} from "../../../../mocks/mockNeighbours";
+import { NeighbourStructure, NeighboursStateStructure } from "../../types";
 import {
   addNeighbourActionCreator,
   neighboursReducer,
-} from "./neighboursSlice";
+} from "../neighboursSlice";
 
 describe("Given a neighbourReducer reducer", () => {
   describe("When it receives a neighbours list, 'Ana Lambea Andorrana' and the action addNeighbour", () => {
