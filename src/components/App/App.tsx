@@ -26,12 +26,11 @@ const App = (): React.ReactElement => {
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/create" element={<CreateNeighbourPage />} />
-          <Route path="/*" element={<NotFoundPage />} />
-          <Route path="/error-page" element={<NotFoundPage />} />
           <Route
             path="/detalle/:neighbourId"
             element={<NeighbourDetailPage />}
           />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </ContainerStyled>
       <NavMenu />

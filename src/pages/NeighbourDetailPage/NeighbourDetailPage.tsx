@@ -1,28 +1,20 @@
 import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useNeighboursApi from "../../hooks/useNeighboursApi";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import {
-  deleteNeighbourActionCreator,
-  loadNeighboursActionCreator,
-  loadSelectedNeighbourActionCreator,
-} from "../../store/features/neighbours/neighboursSlice";
+import { loadSelectedNeighbourActionCreator } from "../../store/features/neighbours/neighboursSlice";
 import { NeighbourStructure } from "../../store/features/types";
 import PageStyled from "../../styles/shared/PageStyled/PageStyled";
 import NeighbourDetailPageStyled from "./NeighbourDetailPageStyled";
 import TitleStyled from "../../styles/shared/TitleStyled/TitleStyled";
-import Button from "../../components/Button/Button";
 
 const NeighbourDetailPage = (): React.ReactElement => {
   const { neighbourId } = useParams();
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const { loadSelectedNeighbour } = useNeighboursApi();
   const neighbour = useAppSelector(
     (state) => state.neighboursState.selectedNeighbour,
   );
-  const { getNeighboursApi, deleteNeighbourFromApi } = useNeighboursApi();
-
   useEffect(() => {
     (async () => {
       const selectedNeighbour = await loadSelectedNeighbour(
@@ -36,19 +28,6 @@ const NeighbourDetailPage = (): React.ReactElement => {
       );
     })();
   }, [dispatch, neighbourId, loadSelectedNeighbour]);
-
-  const deleteNeighbourById = async (neighbourId: string) => {
-    await deleteNeighbourFromApi(neighbourId);
-    dispatch(deleteNeighbourActionCreator(neighbourId));
-
-    const neighbours = await getNeighboursApi();
-
-    if (neighbours) {
-      dispatch(loadNeighboursActionCreator(neighbours.neighbours));
-    }
-
-    navigate("/home");
-  };
 
   return (
     <PageStyled>
@@ -123,14 +102,6 @@ const NeighbourDetailPage = (): React.ReactElement => {
               <span className="detail__info">{neighbour.coments}</span>
             </div>
           </div>
-        </div>
-        <div className="detail__buttons">
-          <Button
-            buttonText="Eliminar"
-            actionOnClick={() => {
-              deleteNeighbourById(neighbour._id);
-            }}
-          />
         </div>
       </NeighbourDetailPageStyled>
     </PageStyled>
