@@ -58,6 +58,25 @@ export const mockAnaNeighbour: NeighbourStructure = {
   image: "https://i.ibb.co/X4jtP8y/minion-rude.webp",
 };
 
+export const mockMartaNeighbourModified: NeighbourStructure = {
+  _id: "6563639cc4ddfcae99eeb07a",
+  name: "Marta Ibarra Chef",
+  floor: "0",
+  door: "1",
+  coefficient: 9,
+  moneyInFavour: 246,
+  firstOwner: "Marta Ibarra Chef",
+  secondOwner: "Mela Maluenda",
+  powers: "Propietario",
+  activityKind: "Restaurante",
+  firstResidence: "No",
+  rented: "No",
+  numberOfResidents: 2,
+  yearOfPurchase: "2018",
+  coments: "Cosetes",
+  image: "https://i.ibb.co/N7k0Q4y/minion-chef.webp",
+};
+
 export const mockNeighbours: NeighbourStructure[] = [
   mockMartaNeighbour,
   mockLauraNeighbour,
@@ -65,6 +84,12 @@ export const mockNeighbours: NeighbourStructure[] = [
 
 export const mockAddNeighbours: NeighbourStructure[] = [
   mockMartaNeighbour,
+  mockLauraNeighbour,
+  mockAnaNeighbour,
+];
+
+export const mockNeighboursModified: NeighbourStructure[] = [
+  mockMartaNeighbourModified,
   mockLauraNeighbour,
   mockAnaNeighbour,
 ];
