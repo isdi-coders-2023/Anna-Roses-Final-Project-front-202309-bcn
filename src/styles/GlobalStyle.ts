@@ -41,6 +41,12 @@ a {
   cursor: pointer;
 }
 
+input, 
+textarea,
+select {
+  font: inherit;
+}
+
 button {
   border: none;
   background-color: transparent;

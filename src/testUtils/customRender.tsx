@@ -9,7 +9,6 @@ import { neighboursReducer } from "../store/features/neighbours/neighboursSlice"
 import { uiReducer } from "../store/features/ui/uiSlice";
 import { mockNeighbours } from "../mocks/mockNeighbours";
 import TostifyStiled from "../styles/shared/TostifyStyled/TostifyStyled";
-import ScrollToTop from "../utils/ScrollToTopFunction";
 import { NeighbourStructure } from "../store/features/types";
 
 export const customRender = (children: React.ReactElement) => {
@@ -32,7 +31,6 @@ export const customRender = (children: React.ReactElement) => {
       <Provider store={mockStore}>
         <ThemeProvider theme={mainTheme}>
           <TostifyStiled />
-          <ScrollToTop />
           <GlobalStyle />
           {children}
         </ThemeProvider>

@@ -5,11 +5,6 @@ const ButtonStyled = styled.button`
   height: 40px;
   border: solid 1px;
   border-color: ${({ theme }) => theme.color.softColor};
-
-  .disabled {
-    border-color: ${({ theme }) => theme.color.softColor};
-    color: ${({ theme }) => theme.color.softColor};
-  }
 `;
 
 export default ButtonStyled;

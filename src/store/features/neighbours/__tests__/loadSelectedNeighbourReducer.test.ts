@@ -1,9 +1,9 @@
-import { mockNeighbours } from "../../../mocks/mockNeighbours";
-import { NeighbourStructure, NeighboursStateStructure } from "../types";
+import { mockMartaNeighbour } from "../../../../mocks/mockNeighbours";
+import { NeighbourStructure, NeighboursStateStructure } from "../../types";
 import {
   loadSelectedNeighbourActionCreator,
   neighboursReducer,
-} from "./neighboursSlice";
+} from "../neighboursSlice";
 
 describe("Given a neighbourReducer reducer", () => {
   describe("When it receives a neighbour list and the neighbour 'Marta Ibarra Chef'", () => {
@@ -12,7 +12,7 @@ describe("Given a neighbourReducer reducer", () => {
         neighbours: [],
         selectedNeighbour: {} as NeighbourStructure,
       };
-      const selectedNeighbour = mockNeighbours[0];
+      const selectedNeighbour = mockMartaNeighbour;
 
       const currentNeighbourState = neighboursReducer(
         initialState,

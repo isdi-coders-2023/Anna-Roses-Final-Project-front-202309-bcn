@@ -9,7 +9,7 @@ const NotFoundPage = (): React.ReactElement => {
         <span className="not-found__page">Página no encontrada</span>
       </div>
       <img
-        src="images/minion-not-found.webp"
+        src="/images/minion-not-found.webp"
         alt="minion in alarm mode"
         className="not-found__image"
         width="250"

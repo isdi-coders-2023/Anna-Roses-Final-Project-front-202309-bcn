@@ -66,6 +66,9 @@ const NeighboursCard = ({
         </li>
       </ul>
       <div className="card__buttons">
+        <a className="card__link" href={`/detalle/${neighbour._id}`}>
+          Detalle
+        </a>
         <Button
           buttonText="Eliminar"
           actionOnClick={() => {

@@ -11,6 +11,9 @@ import App from "../../components/App/App";
 describe("Given a useNeighboursApi custom hook", () => {
   const neighboursList = mockNeighbours;
 
+  const spyScrollTo = vi.fn();
+  Object.defineProperty(global.window, "scrollTo", { value: spyScrollTo });
+
   const {
     result: {
       current: { addNeighbourToApi },

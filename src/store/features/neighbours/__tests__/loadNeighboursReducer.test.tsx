@@ -1,9 +1,9 @@
-import { mockNeighbours } from "../../../mocks/mockNeighbours";
-import { NeighbourStructure, NeighboursStateStructure } from "../types";
+import { mockNeighbours } from "../../../../mocks/mockNeighbours";
+import { NeighbourStructure, NeighboursStateStructure } from "../../types";
 import {
   loadNeighboursActionCreator,
   neighboursReducer,
-} from "./neighboursSlice";
+} from "../neighboursSlice";
 
 describe("Given a neighbourReducer reducer", () => {
   describe("When it receives an empty list and a people list", () => {

@@ -11,6 +11,9 @@ import { errorHandlers } from "../../mocks/handlers";
 describe("Given a useNeighboursApi custom hook", () => {
   const expectedNeighbour = mockNeighbours[2];
 
+  const spyScrollTo = vi.fn();
+  Object.defineProperty(global.window, "scrollTo", { value: spyScrollTo });
+
   const {
     result: {
       current: { loadSelectedNeighbour },

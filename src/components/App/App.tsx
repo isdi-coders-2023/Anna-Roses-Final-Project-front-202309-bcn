@@ -9,7 +9,8 @@ import Loading from "../Loading/Loading";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import TostifyStiled from "../../styles/shared/TostifyStyled/TostifyStyled";
 import CreateNeighbourPage from "../../pages/CreateNeighbourPage/CreateNeighbourPage";
-import ScrollToTop from "../../utils/ScrollToTopFunction";
+import ScrollToTop from "../ScrollToTop/ScrollToTop";
+import NeighbourDetailPage from "../../pages/NeighbourDetailPage/NeighbourDetailPage";
 
 const App = (): React.ReactElement => {
   const uiState = useAppSelector((state) => state.uiState);
@@ -25,8 +26,11 @@ const App = (): React.ReactElement => {
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/create" element={<CreateNeighbourPage />} />
-          <Route path="/*" element={<NotFoundPage />} />
-          <Route path="/error-page" element={<NotFoundPage />} />
+          <Route
+            path="/detalle/:neighbourId"
+            element={<NeighbourDetailPage />}
+          />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </ContainerStyled>
       <NavMenu />

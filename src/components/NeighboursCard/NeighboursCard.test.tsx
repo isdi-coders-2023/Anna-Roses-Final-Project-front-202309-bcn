@@ -4,7 +4,7 @@ import { customRender } from "../../testUtils/customRender";
 import userEvent from "@testing-library/user-event";
 import { server } from "../../mocks/node";
 import { errorHandlers } from "../../mocks/handlers";
-import { mockNeighbours } from "../../mocks/mockNeighbours";
+import { mockMartaNeighbour, mockNeighbours } from "../../mocks/mockNeighbours";
 
 describe("Given a Card component", () => {
   const mockList = mockNeighbours;
@@ -63,6 +63,25 @@ describe("Given a Card component", () => {
       const errorMessage = screen.getByText(feedbackError);
 
       expect(errorMessage).toBeInTheDocument();
+    });
+  });
+
+  describe("When it receives a click on the 'Detalle' button from 'Marta Ibarra Chef' card", () => {
+    test("Then it should show the 'Marta Ibarra Chef' detail page heading", async () => {
+      const expectedHeadingText = "Marta Ibarra Chef";
+      const button = "Detalle";
+      const mockNeighbour = mockMartaNeighbour;
+
+      customRender(<NeighboursCard neighbour={mockNeighbour} />);
+
+      const detailLink = screen.getByRole("link", { name: button });
+      await userEvent.click(detailLink);
+
+      const heading = screen.getByRole("heading", {
+        name: expectedHeadingText,
+      });
+
+      expect(heading).toBeInTheDocument();
     });
   });
 });
