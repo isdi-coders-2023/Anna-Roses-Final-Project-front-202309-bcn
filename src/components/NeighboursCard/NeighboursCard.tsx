@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import useNeighboursApi from "../../hooks/useNeighboursApi";
 import {
   deleteNeighbourActionCreator,
   loadNeighboursActionCreator,
+  loadSelectedNeighbourActionCreator,
 } from "../../store/features/neighbours/neighboursSlice";
 import { NeighbourStructure } from "../../store/features/types";
 import { useAppDispatch } from "../../store/hooks";
@@ -16,7 +18,9 @@ const NeighboursCard = ({
   neighbour,
 }: NeighbourCardProps): React.ReactElement => {
   const dispatch = useAppDispatch();
-  const { getNeighboursApi, deleteNeighbourFromApi } = useNeighboursApi();
+  const { getNeighboursApi, deleteNeighbourFromApi, loadSelectedNeighbour } =
+    useNeighboursApi();
+  const navigate = useNavigate();
 
   const deleteNeighbourById = async (neighbourId: string) => {
     await deleteNeighbourFromApi(neighbourId);
@@ -27,6 +31,14 @@ const NeighboursCard = ({
     if (neighbours) {
       dispatch(loadNeighboursActionCreator(neighbours.neighbours));
     }
+  };
+
+  const modifyNeighbour = async () => {
+    const selectedNeighbour = await loadSelectedNeighbour(neighbour._id);
+
+    dispatch(loadSelectedNeighbourActionCreator(selectedNeighbour!));
+
+    navigate(`/modificar/${neighbour._id}`);
   };
 
   return (
@@ -69,6 +81,12 @@ const NeighboursCard = ({
         <a className="card__link" href={`/detalle/${neighbour._id}`}>
           Detalle
         </a>
+        <Button
+          buttonText="Modificar"
+          actionOnClick={() => {
+            modifyNeighbour();
+          }}
+        />
         <Button
           buttonText="Eliminar"
           actionOnClick={() => {
