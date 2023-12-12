@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   NeighbourStructure,
   NeighbourWithoutId,
@@ -8,12 +8,16 @@ import NeighboursFormStyled from "./NeighboursFormStyled";
 
 interface NeighbourFormProps {
   submitAction: (newNeighbour: NeighbourStructure) => void;
+  selectedNeighbour?: NeighbourStructure;
+  buttonText: string;
 }
 
 const NeighboursForm = ({
   submitAction,
+  selectedNeighbour,
+  buttonText,
 }: NeighbourFormProps): React.ReactElement => {
-  const emptyNeighbour: NeighbourWithoutId = {
+  let emptyNeighbour: NeighbourWithoutId = {
     name: "",
     floor: "",
     door: "",
@@ -31,6 +35,10 @@ const NeighboursForm = ({
     image: "",
   };
 
+  if (selectedNeighbour) {
+    emptyNeighbour = selectedNeighbour;
+  }
+
   const [newNeighbour, setNewNeighbour] =
     useState<NeighbourWithoutId>(emptyNeighbour);
 
@@ -45,14 +53,9 @@ const NeighboursForm = ({
     }));
   };
 
-  useEffect(() => {
-    const newNeighbourValues = Object.values(newNeighbour);
-
-    newNeighbourValues.every((value) => value !== "");
-  }, [newNeighbour]);
-
   const onSubmitForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     submitAction(newNeighbour as NeighbourStructure);
   };
 
@@ -67,6 +70,7 @@ const NeighboursForm = ({
           className="form__input"
           id="name"
           onChange={onChangeEditNeighbour}
+          value={newNeighbour.name}
           required
         />
         <label htmlFor="floor" className="form__label">
@@ -79,6 +83,7 @@ const NeighboursForm = ({
           className="form__input"
           id="floor"
           onChange={onChangeEditNeighbour}
+          value={newNeighbour.floor}
           required
         />
         <label htmlFor="door" className="form__label">
@@ -89,6 +94,7 @@ const NeighboursForm = ({
           className="form__input"
           id="door"
           onChange={onChangeEditNeighbour}
+          value={newNeighbour.door}
           required
         />
         <label htmlFor="coefficient" className="form__label">
@@ -101,6 +107,7 @@ const NeighboursForm = ({
           className="form__input"
           id="coefficient"
           onChange={onChangeEditNeighbour}
+          value={newNeighbour.coefficient}
           required
         />
         <label htmlFor="moneyInFavour" className="form__label">
@@ -113,6 +120,7 @@ const NeighboursForm = ({
           className="form__input"
           id="moneyInFavour"
           onChange={onChangeEditNeighbour}
+          value={newNeighbour.moneyInFavour}
           required
         />
         <label htmlFor="firstOwner" className="form__label">
@@ -123,6 +131,7 @@ const NeighboursForm = ({
           className="form__input"
           id="firstOwner"
           onChange={onChangeEditNeighbour}
+          value={newNeighbour.firstOwner}
           required
         />
         <label htmlFor="secondOwner" className="form__label">
@@ -133,6 +142,7 @@ const NeighboursForm = ({
           className="form__input"
           id="secondOwner"
           onChange={onChangeEditNeighbour}
+          value={newNeighbour.secondOwner}
         />
         <label htmlFor="powers" className="form__label">
           Poderes
@@ -141,6 +151,7 @@ const NeighboursForm = ({
           className="form__input form__select"
           id="powers"
           onChange={onChangeEditNeighbour}
+          value={newNeighbour.powers}
           required
         >
           <option value="" className="form__select--input">
@@ -157,6 +168,7 @@ const NeighboursForm = ({
           className="form__input form__select"
           id="activityKind"
           onChange={onChangeEditNeighbour}
+          value={newNeighbour.activityKind}
           required
         >
           <option value="">Seleccionar</option>
@@ -173,6 +185,7 @@ const NeighboursForm = ({
           className="form__input form__select"
           id="firstResidence"
           onChange={onChangeEditNeighbour}
+          value={newNeighbour.firstResidence}
           required
         >
           <option value="">Seleccionar</option>
@@ -187,6 +200,7 @@ const NeighboursForm = ({
           className="form__input form__select"
           id="rented"
           onChange={onChangeEditNeighbour}
+          value={newNeighbour.rented}
           required
         >
           <option value="">Seleccionar</option>
@@ -203,6 +217,7 @@ const NeighboursForm = ({
           className="form__input"
           id="numberOfResidents"
           onChange={onChangeEditNeighbour}
+          value={newNeighbour.numberOfResidents}
           required
         />
         <label htmlFor="yearOfPurchase" className="form__label">
@@ -214,6 +229,7 @@ const NeighboursForm = ({
           id="yearOfPurchase"
           min={1900 - 1 - 1}
           onChange={onChangeEditNeighbour}
+          value={newNeighbour.yearOfPurchase}
           required
         />
         <label htmlFor="image" className="form__label">
@@ -224,6 +240,7 @@ const NeighboursForm = ({
           className="form__input"
           id="image"
           onChange={onChangeEditNeighbour}
+          value={newNeighbour.image}
           required
         />
         <label htmlFor="coments" className="form__label">
@@ -233,10 +250,11 @@ const NeighboursForm = ({
           className="form__input form__coment"
           id="coments"
           onChange={onChangeEditNeighbour}
+          value={newNeighbour.coments}
           required
         />
         <div className="form__button">
-          <Button buttonText="Añadir" />
+          <Button buttonText={buttonText} />
         </div>
       </form>
     </NeighboursFormStyled>

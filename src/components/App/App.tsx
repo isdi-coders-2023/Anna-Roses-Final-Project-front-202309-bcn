@@ -11,6 +11,7 @@ import TostifyStiled from "../../styles/shared/TostifyStyled/TostifyStyled";
 import CreateNeighbourPage from "../../pages/CreateNeighbourPage/CreateNeighbourPage";
 import ScrollToTop from "../ScrollToTop/ScrollToTop";
 import NeighbourDetailPage from "../../pages/NeighbourDetailPage/NeighbourDetailPage";
+import ModifyNeighbourPage from "../../pages/ModifyNeighbourPage/ModifyNeighbourPage";
 
 const App = (): React.ReactElement => {
   const uiState = useAppSelector((state) => state.uiState);
@@ -29,6 +30,10 @@ const App = (): React.ReactElement => {
           <Route
             path="/detalle/:neighbourId"
             element={<NeighbourDetailPage />}
+          />
+          <Route
+            path="/modificar/:neighbourId"
+            element={<ModifyNeighbourPage />}
           />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
