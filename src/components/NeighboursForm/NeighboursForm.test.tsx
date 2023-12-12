@@ -7,7 +7,7 @@ describe("Given a NeighboursForm component", () => {
   const actionOnClick = vi.fn();
   const addButtonText = "Añadir";
 
-  describe("When it is rendered", () => {
+  describe("When it is rendered and receives an actionOnClick and a 'Añadir' buttonText", () => {
     test("Then it should show a form with a 'Nombre y apellidos' text label", () => {
       const expectedLabelText = "Nombre y apellidos";
 
