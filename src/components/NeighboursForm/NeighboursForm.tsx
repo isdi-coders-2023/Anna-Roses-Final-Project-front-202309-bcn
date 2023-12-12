@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   NeighbourStructure,
   NeighbourWithoutId,
@@ -17,7 +17,7 @@ const NeighboursForm = ({
   selectedNeighbour,
   buttonText,
 }: NeighbourFormProps): React.ReactElement => {
-  let emptyNeighbour: NeighbourWithoutId = {
+  const emptyNeighbour: NeighbourWithoutId = {
     name: "",
     floor: "",
     door: "",
@@ -35,23 +35,28 @@ const NeighboursForm = ({
     image: "",
   };
 
-  if (selectedNeighbour) {
-    emptyNeighbour = selectedNeighbour;
-  }
-
   const [newNeighbour, setNewNeighbour] =
     useState<NeighbourWithoutId>(emptyNeighbour);
 
-  const onChangeEditNeighbour = (
-    event: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
-  ) => {
-    setNewNeighbour((currentNewNeighbour) => ({
-      ...currentNewNeighbour,
-      [event.target.id]: event.target.value,
-    }));
-  };
+  useEffect(() => {
+    if (selectedNeighbour) {
+      setNewNeighbour({ ...selectedNeighbour });
+    }
+  }, [setNewNeighbour, selectedNeighbour]);
+
+  const onChangeEditNeighbour = useCallback(
+    (
+      event: React.ChangeEvent<
+        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+      >,
+    ) => {
+      setNewNeighbour(() => ({
+        ...newNeighbour,
+        [event.target.id]: event.target.value,
+      }));
+    },
+    [newNeighbour],
+  );
 
   const onSubmitForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -70,7 +75,7 @@ const NeighboursForm = ({
           className="form__input"
           id="name"
           onChange={onChangeEditNeighbour}
-          value={newNeighbour.name}
+          defaultValue={newNeighbour.name}
           required
         />
         <label htmlFor="floor" className="form__label">
@@ -83,7 +88,7 @@ const NeighboursForm = ({
           className="form__input"
           id="floor"
           onChange={onChangeEditNeighbour}
-          value={newNeighbour.floor}
+          defaultValue={newNeighbour.floor}
           required
         />
         <label htmlFor="door" className="form__label">
@@ -94,7 +99,7 @@ const NeighboursForm = ({
           className="form__input"
           id="door"
           onChange={onChangeEditNeighbour}
-          value={newNeighbour.door}
+          defaultValue={newNeighbour.door}
           required
         />
         <label htmlFor="coefficient" className="form__label">
@@ -107,7 +112,7 @@ const NeighboursForm = ({
           className="form__input"
           id="coefficient"
           onChange={onChangeEditNeighbour}
-          value={newNeighbour.coefficient}
+          defaultValue={newNeighbour.coefficient}
           required
         />
         <label htmlFor="moneyInFavour" className="form__label">
@@ -120,7 +125,7 @@ const NeighboursForm = ({
           className="form__input"
           id="moneyInFavour"
           onChange={onChangeEditNeighbour}
-          value={newNeighbour.moneyInFavour}
+          defaultValue={newNeighbour.moneyInFavour}
           required
         />
         <label htmlFor="firstOwner" className="form__label">
@@ -131,7 +136,7 @@ const NeighboursForm = ({
           className="form__input"
           id="firstOwner"
           onChange={onChangeEditNeighbour}
-          value={newNeighbour.firstOwner}
+          defaultValue={newNeighbour.firstOwner}
           required
         />
         <label htmlFor="secondOwner" className="form__label">
@@ -142,7 +147,7 @@ const NeighboursForm = ({
           className="form__input"
           id="secondOwner"
           onChange={onChangeEditNeighbour}
-          value={newNeighbour.secondOwner}
+          defaultValue={newNeighbour.secondOwner}
         />
         <label htmlFor="powers" className="form__label">
           Poderes
@@ -217,7 +222,7 @@ const NeighboursForm = ({
           className="form__input"
           id="numberOfResidents"
           onChange={onChangeEditNeighbour}
-          value={newNeighbour.numberOfResidents}
+          defaultValue={newNeighbour.numberOfResidents}
           required
         />
         <label htmlFor="yearOfPurchase" className="form__label">
@@ -229,7 +234,7 @@ const NeighboursForm = ({
           id="yearOfPurchase"
           min={1900 - 1 - 1}
           onChange={onChangeEditNeighbour}
-          value={newNeighbour.yearOfPurchase}
+          defaultValue={newNeighbour.yearOfPurchase}
           required
         />
         <label htmlFor="image" className="form__label">
@@ -240,7 +245,7 @@ const NeighboursForm = ({
           className="form__input"
           id="image"
           onChange={onChangeEditNeighbour}
-          value={newNeighbour.image}
+          defaultValue={newNeighbour.image}
           required
         />
         <label htmlFor="coments" className="form__label">
@@ -250,7 +255,9 @@ const NeighboursForm = ({
           className="form__input form__coment"
           id="coments"
           onChange={onChangeEditNeighbour}
-          value={newNeighbour.coments}
+          defaultValue={newNeighbour.coments}
+          minLength={3}
+          maxLength={50}
           required
         />
         <div className="form__button">

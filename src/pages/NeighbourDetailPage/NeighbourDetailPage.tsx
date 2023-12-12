@@ -15,6 +15,7 @@ const NeighbourDetailPage = (): React.ReactElement => {
   const neighbour = useAppSelector(
     (state) => state.neighboursState.selectedNeighbour,
   );
+
   useEffect(() => {
     (async () => {
       const selectedNeighbour = await loadSelectedNeighbour(
