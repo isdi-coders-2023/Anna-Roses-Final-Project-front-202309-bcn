@@ -9,7 +9,7 @@ const CreateNeighbourPage = (): React.ReactElement => {
   return (
     <PageStyled>
       <TitleStyled className="title">Añade un vecino</TitleStyled>
-      <NeighboursForm submitAction={addNeighbourToApi} />
+      <NeighboursForm submitAction={addNeighbourToApi} buttonText="Añadir" />
     </PageStyled>
   );
 };
