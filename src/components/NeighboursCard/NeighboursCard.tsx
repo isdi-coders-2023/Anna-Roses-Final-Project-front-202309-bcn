@@ -69,6 +69,9 @@ const NeighboursCard = ({
         <a className="card__link" href={`/detalle/${neighbour._id}`}>
           Detalle
         </a>
+        <a className="card__link" href={`/modificar/${neighbour._id}`}>
+          Modificar
+        </a>
         <Button
           buttonText="Eliminar"
           actionOnClick={() => {

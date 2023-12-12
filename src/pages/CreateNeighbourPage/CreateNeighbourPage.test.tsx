@@ -12,5 +12,14 @@ describe("Given a CreateNeighbourPage component", () => {
 
       expect(title).toBeInTheDocument();
     });
+
+    test("Then it should show 'Coeficiente (%)'", () => {
+      const labelText = "Coeficiente (%)";
+
+      customRender(<CreateNeighbourPage />);
+      const label = screen.getByLabelText(labelText);
+
+      expect(label).toBeInTheDocument();
+    });
   });
 });

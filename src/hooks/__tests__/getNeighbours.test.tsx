@@ -16,7 +16,7 @@ describe("Given a useNeighboursApi custom hook", () => {
 
       const currentNeighbours = await getNeighboursApi();
 
-      expect(currentNeighbours).toStrictEqual({ neighbour: neighboursList });
+      expect(currentNeighbours).toStrictEqual({ neighbours: neighboursList });
     });
   });
 });

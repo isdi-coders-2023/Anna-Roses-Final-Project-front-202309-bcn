@@ -126,7 +126,10 @@ const useNeighboursApi = () => {
   );
 
   const modifyNeighbour = useCallback(
-    async (id: string): Promise<NeighbourStructure | void> => {
+    async (
+      id: string,
+      modifiedNeighbour: NeighbourWithoutId,
+    ): Promise<NeighbourStructure | void> => {
       try {
         dispatch(showLoadingActionCreator());
 
@@ -134,6 +137,7 @@ const useNeighboursApi = () => {
           data: { neighbour },
         } = await axios.patch<{ neighbour: NeighbourStructure }>(
           `/neighbours/${id}`,
+          modifiedNeighbour,
         );
 
         dispatch(hideLoadingActionCreator());

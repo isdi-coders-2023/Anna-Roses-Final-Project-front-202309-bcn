@@ -7,18 +7,28 @@ describe("Given a NeighboursForm component", () => {
   const actionOnClick = vi.fn();
   const addButtonText = "Añadir";
 
-  describe("When it is rendered", () => {
+  describe("When it is rendered and receives an actionOnClick and a 'Añadir' buttonText", () => {
     test("Then it should show a form with a 'Nombre y apellidos' text label", () => {
       const expectedLabelText = "Nombre y apellidos";
 
-      customRender(<NeighboursForm submitAction={actionOnClick} />);
+      customRender(
+        <NeighboursForm
+          submitAction={actionOnClick}
+          buttonText={addButtonText}
+        />,
+      );
       const labelText = screen.getByLabelText(expectedLabelText);
 
       expect(labelText).toBeInTheDocument();
     });
 
     test("Then it should show a button with the text 'Añadir'", () => {
-      customRender(<NeighboursForm submitAction={actionOnClick} />);
+      customRender(
+        <NeighboursForm
+          submitAction={actionOnClick}
+          buttonText={addButtonText}
+        />,
+      );
       const button = screen.getByRole("button", { name: addButtonText });
 
       expect(button).toBeInTheDocument();
@@ -30,7 +40,12 @@ describe("Given a NeighboursForm component", () => {
       const expectedInputText = "Marta Chef";
       const label = "Nombre y apellidos";
 
-      customRender(<NeighboursForm submitAction={actionOnClick} />);
+      customRender(
+        <NeighboursForm
+          submitAction={actionOnClick}
+          buttonText={addButtonText}
+        />,
+      );
 
       const inputText = screen.getByRole("textbox", { name: label });
       await userEvent.type(inputText, expectedInputText);
@@ -43,7 +58,12 @@ describe("Given a NeighboursForm component", () => {
     test("Then it should call its onSubmit action", () => {
       const label = "Nombre y apellidos";
 
-      customRender(<NeighboursForm submitAction={actionOnClick} />);
+      customRender(
+        <NeighboursForm
+          submitAction={actionOnClick}
+          buttonText={addButtonText}
+        />,
+      );
       const neighbourForm = screen.getByLabelText(label);
       fireEvent.submit(neighbourForm);
 
@@ -76,7 +96,12 @@ describe("Given a NeighboursForm component", () => {
       const dateLabelText = ["Fecha de adquisición"];
       const dateInput = "2022-01-01";
 
-      customRender(<NeighboursForm submitAction={actionOnClick} />);
+      customRender(
+        <NeighboursForm
+          submitAction={actionOnClick}
+          buttonText={addButtonText}
+        />,
+      );
 
       for (const labelText of stringLabelText) {
         const inputElement = screen.getByLabelText(labelText);

@@ -2,16 +2,16 @@
 import { http, HttpResponse } from "msw";
 import {
   mockNeighbours,
-  mockNeighboursModified,
   mockMartaNeighbour,
   mockAnaNeighbour,
+  mockMartaNeighbourModified,
 } from "./mockNeighbours";
 
 const urlApi = import.meta.env.VITE_API_URL;
 
 export const handlers = [
   http.get(`${urlApi}/neighbours`, () =>
-    HttpResponse.json({ neighbour: mockNeighbours }),
+    HttpResponse.json({ neighbours: mockNeighbours }),
   ),
   http.delete(`${urlApi}/neighbours/:_id`, () => HttpResponse.json({})),
   http.post(`${urlApi}/neighbours/create`, () =>
@@ -21,7 +21,7 @@ export const handlers = [
     HttpResponse.json(mockMartaNeighbour),
   ),
   http.patch(`${urlApi}/neighbours/:_id`, () =>
-    HttpResponse.json({ neighbour: mockNeighboursModified }),
+    HttpResponse.json({ neighbour: mockMartaNeighbourModified }),
   ),
 ];
 

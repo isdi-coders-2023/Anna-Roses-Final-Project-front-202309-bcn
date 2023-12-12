@@ -13,6 +13,8 @@ describe("Given a useNeighboursApi custom hook", () => {
 
   const spyScrollTo = vi.fn();
   Object.defineProperty(global.window, "scrollTo", { value: spyScrollTo });
+  const mockModifiedNeighbours = mockNeighboursModified;
+  const mockModifiedNeighbour = mockModifiedNeighbours[0];
 
   const {
     result: {
@@ -21,13 +23,13 @@ describe("Given a useNeighboursApi custom hook", () => {
   } = renderHook(() => useNeighboursApi(), { wrapper: providerWrapper });
 
   describe("When it is called with its modifyNieghbour function with 'Marta Ibarra Chef'", () => {
-    test("Then it should show the text 'Hemos modificado al nuevo vecino' as a feedback message", async () => {
-      const mockModifiedNeighbours = mockNeighboursModified;
-      const modifiedNeighbourId = mockModifiedNeighbours[0]._id;
+    test("Then it should show the modified neighbour", async () => {
+      const response = await modifyNeighbour(
+        mockNeighboursModified[0]._id,
+        mockNeighboursModified[0],
+      );
 
-      const response = await modifyNeighbour(modifiedNeighbourId);
-
-      expect(response).toStrictEqual(mockModifiedNeighbours);
+      expect(response).toStrictEqual(mockModifiedNeighbours[0]);
     });
   });
 
@@ -45,7 +47,7 @@ describe("Given a useNeighboursApi custom hook", () => {
         </MemoryRouter>,
       );
 
-      await modifyNeighbour(expectedNeighbourId);
+      await modifyNeighbour(expectedNeighbourId, mockModifiedNeighbour);
       const feedback = await screen.findByText(feedbackMessage);
 
       expect(feedback).toBeInTheDocument();
