@@ -1,4 +1,4 @@
-import { screen } from "@testing-library/react";
+import { fireEvent, screen } from "@testing-library/react";
 import App from "./App";
 import {
   customRender,
@@ -50,6 +50,28 @@ describe("Given an App component", () => {
       const alarmModeImage = screen.getByAltText(expectedAltText);
 
       expect(alarmModeImage).toBeInTheDocument();
+    });
+  });
+
+  describe("When it is rendered on the ModifyNeighbourPage and the user changes the user changes coment of the 'Marta Ibarra Chef' and clicks on the button to modify", () => {
+    test("Then it should modify 'Marta Ibarra Chef' and go to de HomePage", async () => {
+      const buttonText = "Modificar";
+      const titleText = "Administra tu comunidad";
+      const path = "/modificar/6563639cc4ddfcae99eeb07a";
+
+      customRenderWithoutRouter(
+        <MemoryRouter initialEntries={[path]}>
+          <App />
+        </MemoryRouter>,
+      );
+
+      const button = screen.getByRole("button", { name: buttonText });
+
+      await fireEvent.submit(button);
+
+      const title = await screen.findByRole("heading", { name: titleText });
+
+      expect(title).toBeInTheDocument();
     });
   });
 });
