@@ -12,12 +12,16 @@ import {
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import PageStyled from "../../styles/shared/PageStyled/PageStyled";
 import TitleStyled from "../../styles/shared/TitleStyled/TitleStyled";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 
 const ModifyNeighbourPage = (): React.ReactElement => {
   const { neighbourId } = useParams();
   const dispatch = useAppDispatch();
   const { modifyNeighbour, loadSelectedNeighbour } = useNeighboursApi();
+
+  const { selectedNeighbour } = useAppSelector(
+    (state) => state.neighboursState,
+  );
 
   useEffect(() => {
     (async () => {
@@ -33,18 +37,14 @@ const ModifyNeighbourPage = (): React.ReactElement => {
     })();
   }, [dispatch, neighbourId, loadSelectedNeighbour]);
 
-  const { selectedNeighbour } = useAppSelector(
-    (state) => state.neighboursState,
+  const updateNeighbour = useCallback(
+    async (neighbour: NeighbourWithoutId) => {
+      const updatedNeighbour = await modifyNeighbour(neighbourId!, neighbour);
+
+      dispatch(modifyNeihbourActionCreator(updatedNeighbour!));
+    },
+    [dispatch, modifyNeighbour, neighbourId],
   );
-
-  const updateNeighbour = async (neighbour: NeighbourWithoutId) => {
-    const updatedNeighbour = await modifyNeighbour(
-      selectedNeighbour._id,
-      neighbour,
-    );
-
-    dispatch(modifyNeihbourActionCreator(updatedNeighbour!));
-  };
 
   return (
     <PageStyled>

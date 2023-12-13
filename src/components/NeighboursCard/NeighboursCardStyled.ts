@@ -5,6 +5,8 @@ const NeighboursCardStyled = styled.article`
   border-color: ${({ theme }) => theme.color.softColor};
   padding: 23px 16px 32px 16px;
   overflow-wrap: anywhere;
+  height: 860px;
+  position: relative;
 
   .card {
     &__image {
@@ -36,6 +38,9 @@ const NeighboursCardStyled = styled.article`
       align-items: center;
       gap: 11px;
       margin-top: 32px;
+      position: absolute;
+      bottom: 32px;
+      right: 30%;
     }
 
     &__link {
