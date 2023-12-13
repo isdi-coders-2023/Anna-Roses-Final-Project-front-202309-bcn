@@ -38,33 +38,37 @@ const NeighboursCard = ({
         height="200"
         className="card__image"
       />
-      <h2 className="card__item card__name">{neighbour.name}</h2>
-      <ul className="card__items">
-        <li className="card__item">
-          <span className="card__intro">Piso: </span>
-          <span className="card__input">{neighbour.floor}</span>
-        </li>
-        <li className="card__item">
-          <span className="card__intro">Puerta: </span>
-          <span className="card__input">{neighbour.door}</span>
-        </li>
-        <li className="card__item">
-          <span className="card__intro">Coeficiente: </span>
-          <span className="card__input">{neighbour.coefficient}%</span>
-        </li>
-        <li className="card__item">
-          <span className="card__intro">Dinero a favor: </span>
-          <span className="card__input">{neighbour.moneyInFavour}€</span>
-        </li>
-        <li className="card__item">
-          <span className="card__intro">Tipo de actividad: </span>
-          <span className="card__input">{neighbour.activityKind}</span>
-        </li>
-        <li className="card__item">
-          <span className="card__intro">Comentarios: </span>
-          <span className="card__input">{neighbour.coments}</span>
-        </li>
-      </ul>
+      <div className="card__container">
+        <h2 className="card__item card__name">{neighbour.name}</h2>
+        <ul className="card__items">
+          <li className="card__item">
+            <span className="card__intro">Piso: </span>
+            <span className="card__input">{neighbour.floor}</span>
+          </li>
+          <li className="card__item">
+            <span className="card__intro">Puerta: </span>
+            <span className="card__input">{neighbour.door}</span>
+          </li>
+          <li className="card__item">
+            <span className="card__intro">Coeficiente: </span>
+            <span className="card__input">{neighbour.coefficient}%</span>
+          </li>
+          <li className="card__item">
+            <span className="card__intro">Dinero a favor: </span>
+            <span className="card__input">{neighbour.moneyInFavour}€</span>
+          </li>
+          <li className="card__item">
+            <span className="card__intro">Tipo de actividad: </span>
+            <span className="card__input">{neighbour.activityKind}</span>
+          </li>
+          <li className="card__item">
+            <span className="card__intro">Comentarios: </span>
+            <span className="card__input card__coments">
+              {neighbour.coments}
+            </span>
+          </li>
+        </ul>
+      </div>
       <div className="card__buttons">
         <a className="card__link" href={`/detalle/${neighbour._id}`}>
           Detalle
