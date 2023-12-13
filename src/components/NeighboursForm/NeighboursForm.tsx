@@ -35,14 +35,16 @@ const NeighboursForm = ({
     image: "",
   };
 
+  const initialState = selectedNeighbour ?? emptyNeighbour;
+
   const [newNeighbour, setNewNeighbour] =
-    useState<NeighbourWithoutId>(emptyNeighbour);
+    useState<NeighbourWithoutId>(initialState);
 
   useEffect(() => {
     if (selectedNeighbour) {
       setNewNeighbour({ ...selectedNeighbour });
     }
-  }, [setNewNeighbour, selectedNeighbour]);
+  }, [selectedNeighbour]);
 
   const onChangeEditNeighbour = useCallback(
     (
@@ -50,19 +52,23 @@ const NeighboursForm = ({
         HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
       >,
     ) => {
-      setNewNeighbour(() => ({
+      setNewNeighbour((newNeighbour) => ({
         ...newNeighbour,
         [event.target.id]: event.target.value,
       }));
     },
-    [newNeighbour],
+    [],
   );
 
-  const onSubmitForm = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const onSubmitForm = useCallback(
+    (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      const neighbour = { ...newNeighbour };
 
-    submitAction(newNeighbour as NeighbourStructure);
-  };
+      submitAction(neighbour as NeighbourStructure);
+    },
+    [newNeighbour, submitAction],
+  );
 
   return (
     <NeighboursFormStyled>
@@ -109,6 +115,7 @@ const NeighboursForm = ({
           type="number"
           min={0}
           max={100}
+          step={1}
           className="form__input"
           id="coefficient"
           onChange={onChangeEditNeighbour}
@@ -122,6 +129,7 @@ const NeighboursForm = ({
           type="number"
           min={-900000}
           max={900000}
+          step={1}
           className="form__input"
           id="moneyInFavour"
           onChange={onChangeEditNeighbour}
@@ -219,6 +227,7 @@ const NeighboursForm = ({
           type="number"
           min={0}
           max={10}
+          step={1}
           className="form__input"
           id="numberOfResidents"
           onChange={onChangeEditNeighbour}
@@ -257,7 +266,7 @@ const NeighboursForm = ({
           onChange={onChangeEditNeighbour}
           defaultValue={newNeighbour.coments}
           minLength={3}
-          maxLength={50}
+          maxLength={120}
           required
         />
         <div className="form__button">
